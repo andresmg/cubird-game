@@ -1,0 +1,270 @@
+.main-content,
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grad-bg {
+  background: rgb(183, 216, 86);
+  background: linear-gradient(
+    0deg,
+    rgba(183, 216, 86, 1) 0%,
+    rgba(212, 215, 84, 1) 45%,
+    rgba(82, 198, 240, 1) 45%,
+    rgba(82, 198, 240, 1) 60%,
+    rgba(153, 193, 218, 1) 100%
+  );
+}
+
+.logo {
+  height: auto;
+  img {
+    width: 20%;
+    margin-top: 15rem;
+  }
+  p {
+    margin: 2rem;
+    font-size: 1.8rem;
+    color: $dark-green;
+  }
+}
+
+.start-btn,
+.start-btn:visited {
+  color: $white;
+  border: 0;
+  border-radius: 0;
+  font-size: 2.4rem;
+  padding: 1rem;
+  width: 24rem;
+  background: $main-green;
+  margin: 3rem auto 2rem auto;
+
+  &:hover,
+  &:active {
+    background: $lime;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.txt-link,
+.txt-link:visited {
+  background: none;
+  border: 0;
+  font-size: 1.6rem;
+  color: $white;
+
+  &:hover,
+  &:active {
+    color: $lime;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.fence {
+  background: url(../images/fence.svg) repeat-x center bottom;
+  width: 100%;
+  position: absolute;
+  bottom: 30%;
+  height: 3rem;
+  left: 0;
+}
+
+.grass {
+  background: url(../images/grass.svg) repeat-x center top;
+  width: 100%;
+  position: absolute;
+  bottom: 5.5rem;
+  height: 15rem;
+  left: 0;
+  z-index: 10;
+}
+
+.parrot {
+  position: absolute;
+  bottom: 5.5rem;
+  left: 15%;
+  width: 20rem;
+  height: 40rem;
+  background: url(../images/parrot.svg) no-repeat center bottom / contain;
+  z-index: 5;
+}
+
+.duck {
+  position: absolute;
+  bottom: 31%;
+  left: 25%;
+  width: 15rem;
+  height: 15rem;
+  background: url(../images/duck.svg) no-repeat center bottom / contain;
+  z-index: 1;
+}
+
+.large {
+  position: absolute;
+  bottom: 30.5%;
+  left: 36%;
+  width: 9rem;
+  height: 30rem;
+  background: url(../images/large.svg) no-repeat center bottom / contain;
+  z-index: 1;
+}
+
+.bird {
+  position: absolute;
+  bottom: 31%;
+  left: 45%;
+  width: 8.5rem;
+  height: 11rem;
+  background: url(../images/bird.svg) no-repeat center bottom / contain;
+  z-index: 1;
+}
+
+.muckinbird {
+  position: absolute;
+  bottom: 30%;
+  left: 52%;
+  width: 10rem;
+  height: 8rem;
+  background: url(../images/muckinbird.svg) no-repeat center bottom / contain;
+  z-index: 1;
+}
+
+.tucan {
+  position: absolute;
+  bottom: 25.5%;
+  left: 54%;
+  width: 21.5rem;
+  height: 27rem;
+  background: url(../images/tucan.svg) no-repeat center bottom / contain;
+  z-index: 1;
+}
+
+.flamingo {
+  position: absolute;
+  bottom: 5.5rem;
+  left: 65%;
+  width: 20rem;
+  height: 38rem;
+  background: url(../images/flamingo.svg) no-repeat center bottom / contain;
+  z-index: 5;
+}
+
+.owl {
+  position: absolute;
+  bottom: 30.5%;
+  left: 74%;
+  width: 10rem;
+  height: 25rem;
+  background: url(../images/owl.svg) no-repeat center bottom / contain;
+  z-index: 1;
+}
+
+.trees {
+  position: absolute;
+  bottom: 41.9%;
+  right: 10%;
+  width: 17rem;
+  height: 12rem;
+  background: url(../images/trees.svg) no-repeat center bottom / contain;
+}
+
+.house-cow {
+  position: absolute;
+  bottom: 42%;
+  left: 20%;
+  width: 54rem;
+  height: 10rem;
+  background: url(../images/house-cow.svg) no-repeat center bottom / contain;
+}
+
+.cloud-01 {
+  position: absolute;
+  top: 30%;
+  left: 15%;
+  width: 15rem;
+  height: 10rem;
+  background: url(../images/cloud-01.svg) no-repeat center bottom / contain;
+  animation: slide 20s linear infinite;
+}
+
+.cloud-02 {
+  position: absolute;
+  top: 20%;
+  right: 15%;
+  width: 15rem;
+  height: 10rem;
+  background: url(../images/cloud-02.svg) no-repeat center bottom / contain;
+  animation: slide 27s linear reverse infinite;
+}
+
+.cloud-03 {
+  position: fixed;
+  bottom: 47%;
+  left: 5%;
+  width: 17rem;
+  height: 12rem;
+  background: url(../images/cloud-03.svg) no-repeat center bottom / contain;
+}
+
+.cloud-04 {
+  position: fixed;
+  top: 4%;
+  right: 2rem;
+  width: 17rem;
+  height: 12rem;
+  background: url(../images/cloud-04.svg) no-repeat right bottom / contain;
+}
+
+.fly-01 {
+  position: fixed;
+  top: 4%;
+  right: 2rem;
+  width: 5rem;
+  height: 4rem;
+  background: url(../images/fly-01.svg) no-repeat right bottom / contain;
+  animation: random-rigth 3s ease infinite;
+}
+
+.fly-02 {
+  position: fixed;
+  top: 4%;
+  right: 2rem;
+  width: 5rem;
+  height: 4rem;
+  background: url(../images/fly-02.svg) no-repeat right bottom / contain;
+  animation: random-left 8s ease infinite;
+}
+
+.fly-03 {
+  position: fixed;
+  top: 4%;
+  right: 2rem;
+  width: 5rem;
+  height: 4rem;
+  background: url(../images/fly-03.svg) no-repeat right bottom / contain;
+  animation: random-left 6s ease reverse infinite;
+}
+
+.modal {
+  background: rgba($main-green, 0.3);
+  box-shadow: 0;
+
+  .modal-content {
+    border: 0;
+    .modal-header {
+      background: $main-green;
+    }
+    h5 {
+      font-size: 3rem;
+      color: $white;
+    }
+  }
+}

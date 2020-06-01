@@ -1,0 +1,129 @@
+@keyframes slide {
+  0% {
+    left: -15%;
+  }
+
+  100% {
+    left: 101%;
+  }
+}
+
+@keyframes random-rigth {
+  0% {
+    right: -15%;
+    top: 5%;
+    transform: scale(1);
+  }
+
+  10% {
+    right: 5%;
+    top: 3%;
+  }
+
+  20% {
+    right: 10%;
+    top: 10%;
+  }
+
+  30% {
+    right: 15%;
+    top: 7%;
+  }
+
+  40% {
+    right: 20%;
+    top: 3%;
+    transform: scale(0.4);
+  }
+
+  50% {
+    right: 25%;
+    top: 13%;
+  }
+
+  60% {
+    right: 30%;
+    top: 7%;
+  }
+
+  70% {
+    right: 35%;
+    top: 11%;
+  }
+
+  80% {
+    right: 45%;
+    top: 5%;
+  }
+
+  90% {
+    right: 50%;
+    top: 1%;
+  }
+
+  100% {
+    right: 55%;
+    top: -5%;
+    transform: scale(0.6);
+  }
+}
+
+@keyframes random-left {
+  0% {
+    left: -1%;
+    top: 25%;
+    transform: scale(1);
+  }
+
+  10% {
+    left: 25%;
+    top: 13%;
+  }
+
+  20% {
+    left: 30%;
+    top: 30%;
+  }
+
+  30% {
+    left: 35%;
+    top: 27%;
+  }
+
+  40% {
+    left: 40%;
+    top: 23%;
+    transform: scale(0.4);
+  }
+
+  50% {
+    left: 45%;
+    top: 33%;
+  }
+
+  60% {
+    left: 58%;
+    top: 27%;
+  }
+
+  70% {
+    left: 75%;
+    top: 31%;
+  }
+
+  80% {
+    left: 85%;
+    top: 25%;
+  }
+
+  90% {
+    left: 90%;
+    top: 21%;
+  }
+
+  100% {
+    left: 105%;
+    top: -5%;
+    transform: scale(0.6);
+  }
+}

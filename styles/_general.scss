@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+body {
+  background-color: $main-blue;
+  padding: 2rem;
+  padding-bottom: 0;
+  position: relative;
+}
+
+.main-content,
+.game-content {
+  background-color: $white;
+  border-radius: 2rem;
+  height: calc(100vh - 8rem);
+}
+
+.copyright {
+  padding: 20px 0;
+  color: $white;
+}

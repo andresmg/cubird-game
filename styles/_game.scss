@@ -1,0 +1,121 @@
+.board {
+  background: $white;
+  border-radius: 0 2rem 2rem 0rem;
+  padding: 3rem;
+}
+
+.badge {
+  background: $purple;
+  min-width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 1.6rem;
+  border-radius: 0;
+}
+
+.players {
+  background: $light-blue url(../images/player-bg.svg) no-repeat center bottom /
+    contain;
+  border-radius: 2rem 0 0 2rem;
+  padding: 3rem;
+  color: $white;
+
+  .logo-min {
+    width: 45%;
+    margin-bottom: 3rem;
+  }
+
+  h4 {
+    margin-top: 2rem;
+  }
+
+  [class*="col-"] {
+    margin-bottom: 2rem;
+    border: 1px dotted $white;
+    max-height: 16.5rem;
+    padding: 0;
+    max-width: 12rem;
+    position: relative;
+  }
+
+  .end-round-btn {
+    font-size: 1.4rem;
+    background: $main-green;
+    color: $white;
+    padding: 1rem;
+    border: 0;
+
+    &:hover,
+    &:active {
+      background: $lime;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.constant,
+.variable,
+.left {
+  [class*="col-"] {
+    margin-bottom: 2rem;
+    padding: 0;
+    position: relative;
+    height: 20rem;
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+
+    img {
+      height: 20rem;
+      width: 15rem;
+    }
+  }
+}
+
+.constant,
+.left {
+  .badge {
+    left: 3rem;
+  }
+}
+
+.variable {
+  .row {
+    justify-content: center;
+  }
+
+  [class*="col-"] {
+    border: 1px dotted $main-blue;
+    max-width: 14.7rem;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: flex-end;
+  .badge {
+    background: $lime;
+  }
+}
+
+.variable {
+  img,
+  .badge {
+    display: none;
+  }
+}
+
+.constant {
+  .badge {
+    display: none;
+  }
+}
