@@ -338,7 +338,7 @@ body {
   outline: none;
 }
 
-.fence {
+.allBirds .fence {
   background: url(../images/fence.svg) repeat-x center bottom;
   width: 100%;
   position: absolute;
@@ -347,7 +347,7 @@ body {
   left: 0;
 }
 
-.grass {
+.allBirds .grass {
   background: url(../images/grass.svg) repeat-x center top;
   width: 100%;
   position: absolute;
@@ -357,7 +357,7 @@ body {
   z-index: 10;
 }
 
-.parrot {
+.allBirds .parrot {
   position: absolute;
   bottom: 5.5rem;
   left: 15%;
@@ -367,7 +367,7 @@ body {
   z-index: 5;
 }
 
-.duck {
+.allBirds .duck {
   position: absolute;
   bottom: 31%;
   left: 25%;
@@ -377,7 +377,7 @@ body {
   z-index: 1;
 }
 
-.large {
+.allBirds .large {
   position: absolute;
   bottom: 30.5%;
   left: 36%;
@@ -387,7 +387,7 @@ body {
   z-index: 1;
 }
 
-.bird {
+.allBirds .bird {
   position: absolute;
   bottom: 31%;
   left: 45%;
@@ -397,17 +397,17 @@ body {
   z-index: 1;
 }
 
-.muckinbird {
+.allBirds .mockingbird {
   position: absolute;
   bottom: 30%;
   left: 52%;
   width: 10rem;
   height: 8rem;
-  background: url(../images/muckinbird.svg) no-repeat center bottom/contain;
+  background: url(../images/mockingbird.svg) no-repeat center bottom/contain;
   z-index: 1;
 }
 
-.tucan {
+.allBirds .tucan {
   position: absolute;
   bottom: 25.5%;
   left: 54%;
@@ -417,7 +417,7 @@ body {
   z-index: 1;
 }
 
-.flamingo {
+.allBirds .flamingo {
   position: absolute;
   bottom: 5.5rem;
   left: 65%;
@@ -427,7 +427,7 @@ body {
   z-index: 5;
 }
 
-.owl {
+.allBirds .owl {
   position: absolute;
   bottom: 30.5%;
   left: 74%;
@@ -437,7 +437,7 @@ body {
   z-index: 1;
 }
 
-.trees {
+.allBirds .trees {
   position: absolute;
   bottom: 41.9%;
   right: 10%;
@@ -446,7 +446,7 @@ body {
   background: url(../images/trees.svg) no-repeat center bottom/contain;
 }
 
-.house-cow {
+.allBirds .house-cow {
   position: absolute;
   bottom: 42%;
   left: 20%;
@@ -455,7 +455,7 @@ body {
   background: url(../images/house-cow.svg) no-repeat center bottom/contain;
 }
 
-.cloud-01 {
+.allBirds .cloud-01 {
   position: absolute;
   top: 30%;
   left: 15%;
@@ -466,7 +466,7 @@ body {
           animation: slide 20s linear infinite;
 }
 
-.cloud-02 {
+.allBirds .cloud-02 {
   position: absolute;
   top: 20%;
   right: 15%;
@@ -476,7 +476,7 @@ body {
   animation: slide 27s linear reverse infinite;
 }
 
-.cloud-03 {
+.allBirds .cloud-03 {
   position: fixed;
   bottom: 47%;
   left: 5%;
@@ -485,7 +485,7 @@ body {
   background: url(../images/cloud-03.svg) no-repeat center bottom/contain;
 }
 
-.cloud-04 {
+.allBirds .cloud-04 {
   position: fixed;
   top: 4%;
   right: 2rem;
@@ -494,7 +494,7 @@ body {
   background: url(../images/cloud-04.svg) no-repeat right bottom/contain;
 }
 
-.fly-01 {
+.allBirds .fly-01 {
   position: fixed;
   top: 4%;
   right: 2rem;
@@ -505,7 +505,7 @@ body {
           animation: random-rigth 3s ease infinite;
 }
 
-.fly-02 {
+.allBirds .fly-02 {
   position: fixed;
   top: 4%;
   right: 2rem;
@@ -516,7 +516,7 @@ body {
           animation: random-left 8s ease infinite;
 }
 
-.fly-03 {
+.allBirds .fly-03 {
   position: fixed;
   top: 4%;
   right: 2rem;
@@ -545,10 +545,95 @@ body {
   color: #ffffff;
 }
 
+.owl {
+  background: url(../images/card-owl.svg) no-repeat center center/cover;
+}
+
+.parrot {
+  background: url(../images/card-parrot.svg) no-repeat center center/cover;
+}
+
+.large {
+  background: url(../images/card-large.svg) no-repeat center center/cover;
+}
+
+.duck {
+  background: url(../images/card-duck.svg) no-repeat center center/cover;
+}
+
+.flamingo {
+  background: url(../images/card-flamingo.svg) no-repeat center center/cover;
+}
+
+.tucan {
+  background: url(../images/card-tucan.svg) no-repeat center center/cover;
+}
+
+.bird {
+  background: url(../images/card-bird.svg) no-repeat center center/cover;
+}
+
+.mockingbird {
+  background: url(../images/card-mockingbird.svg) no-repeat center center/cover;
+}
+
+.back {
+  background: url(../images/back.svg) no-repeat center center/cover;
+}
+
 .board {
   background: #ffffff;
   border-radius: 0 2rem 2rem 0rem;
   padding: 3rem;
+  background: #ffffff url(../images/grass-bg.svg) repeat-x left bottom;
+  position: relative;
+}
+
+.board .lefties {
+  right: 2rem;
+  width: 14rem;
+  position: absolute;
+  height: 20.5rem;
+}
+
+.board-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 80vh;
+}
+
+.board-content > .gameRow {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-bottom: 2rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.board-content > .gameRow [class*="col-"] {
+  border: 1px dotted #6cb0b9;
+  background-color: #ffffff;
+}
+
+.cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 25vh;
+}
+
+.cards > [class*="col-"] {
+  border: 1px dotted #ffffff;
+  background-color: #86d2ee;
+  margin: 1rem 2rem;
+  background-position: top center;
 }
 
 .badge {
@@ -567,13 +652,13 @@ body {
   color: #ffffff;
   position: absolute;
   bottom: 0;
-  left: 0;
+  right: 0;
   font-size: 1.6rem;
   border-radius: 0;
 }
 
 .players {
-  background: #86d2ee url(../images/player-bg.svg) no-repeat center bottom/contain;
+  background: #86d2ee url(../images/player-bg.svg) repeat-x right bottom;
   border-radius: 2rem 0 0 2rem;
   padding: 3rem;
   color: #ffffff;
@@ -588,13 +673,8 @@ body {
   margin-top: 2rem;
 }
 
-.players [class*="col-"] {
+.players h1 {
   margin-bottom: 2rem;
-  border: 1px dotted #ffffff;
-  max-height: 16.5rem;
-  padding: 0;
-  max-width: 12rem;
-  position: relative;
 }
 
 .players .end-round-btn {
@@ -613,64 +693,19 @@ body {
   outline: none;
 }
 
-.constant [class*="col-"],
-.variable [class*="col-"],
-.left [class*="col-"] {
-  margin-bottom: 2rem;
-  padding: 0;
-  position: relative;
-  height: 20rem;
-  width: 15rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.carousel .carousel-inner {
+  padding: 10px 20px;
 }
 
-.constant [class*="col-"] img,
-.variable [class*="col-"] img,
-.left [class*="col-"] img {
-  height: 20rem;
-  width: 15rem;
+.carousel .carousel-inner h4 {
+  margin-bottom: 20px;
 }
 
-.constant .badge,
-.left .badge {
-  left: 3rem;
+.carousel .carousel-control-next {
+  right: -40px;
 }
 
-.variable .row {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.variable [class*="col-"] {
-  border: 1px dotted #6cb0b9;
-  max-width: 14.7rem;
-}
-
-.left {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-}
-
-.left .badge {
-  background: #d4d754;
-}
-
-.variable img,
-.variable .badge {
-  display: none;
-}
-
-.constant .badge {
-  display: none;
+.carousel .carousel-control-prev {
+  left: -40px;
 }
 /*# sourceMappingURL=main.css.map */

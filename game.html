@@ -21,47 +21,125 @@
           <img src="./images/logo.svg" alt="logo cubirds" class="logo-min" />
           <h1>Jugador 1</h1>
 
-          <h4>Cartas</h4>
           <div class="row cards justify-content-around">
-            <div class="col-3">
+            <div class="col-2 mockingbird" name="mockingbird">
               <span class="badge">2</span>
-              <img src="./images/card-muckinbird.svg" alt="card" />
             </div>
-            <div class="col-3">
-              <img src="./images/card-flamingo.svg" alt="card" />
+            <div class="col-2 flamingo" name="flamingo">
+              <span class="badge"></span>
             </div>
-            <div class="col-3">
-              <img src="./images/card-bird.svg" alt="card" />
+            <div class="col-2 bird" name="bird">
+              <span class="badge"></span>
             </div>
-            <div class="col-3">
+            <div class="col-2 parrot" name="parrot">
               <span class="badge">2</span>
-              <img src="./images/card-parrot.svg" alt="card" />
             </div>
-            <div class="col-3">
-              <img src="./images/card-owl.svg" alt="card" />
+            <div class="col-2 owl" name="owl">
+              <span class="badge"></span>
             </div>
-            <div class="col-3">
-              <img src="./images/card-duck.svg" alt="card" />
+            <div class="col-2 duck" name="duck">
+              <span class="badge"></span>
             </div>
-            <div class="col-3"></div>
-            <div class="col-3"></div>
+            <div class="col-2 clickable" name="clickable">
+              <span class="badge"></span>
+            </div>
+            <div class="col-2 clickable" name="clickable">
+              <span class="badge"></span>
+            </div>
           </div>
 
-          <h4>Bandadas</h4>
-          <div class="row cards justify-content-around">
-            <div class="col-3">
-              <span class="badge">2</span>
-              <img src="./images/card-muckinbird.svg" alt="card" />
+          <div
+            id="carouselExampleControls"
+            class="carousel slide"
+            data-ride="carousel"
+            data-interval="false"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <h4>Bandadas jugador 1</h4>
+                <div class="row cards justify-content-around">
+                  <div class="col-2 mockingbird" name="mockingbird">
+                    <span class="badge">2</span>
+                  </div>
+                  <div class="col-2 tucan" name="tucan">
+                    <span class="badge">2</span>
+                  </div>
+                  <div class="col-2 large" name="large">
+                    <span class="badge"></span>
+                  </div>
+                  <div class="col-2 clickable" name="clickable">
+                    <span class="badge"></span>
+                  </div>
+                  <div class="col-2 clickable" name="clickable">
+                    <span class="badge"></span>
+                  </div>
+                  <div class="col-2 clickable" name="clickable">
+                    <span class="badge"></span>
+                  </div>
+                  <div class="col-2 clickable" name="clickable">
+                    <span class="badge"></span>
+                  </div>
+                  <div class="col-2 clickable" name="clickable">
+                    <span class="badge"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <h4>Bandadas jugador 2</h4>
+                <div class="row cards justify-content-around">
+                  <div class="col-2 mockingbird" name="mockingbird">
+                    <span class="badge">2</span>
+                  </div>
+                  <div class="col-2 tucan" name="tucan">
+                    <span class="badge">2</span>
+                  </div>
+                  <div class="col-2 large" name="large">
+                    <span class="badge"></span>
+                  </div>
+                  <div class="col-2 bird" name="bird">
+                    <span class="badge"></span>
+                  </div>
+                  <div class="col-2 flamingo" name="flamingo">
+                    <span class="badge"></span>
+                  </div>
+                  <div class="col-2 owl" name="owl">
+                    <span class="badge"></span>
+                  </div>
+                  <div class="col-2 clickable" name="clickable">
+                    <span class="badge"></span>
+                  </div>
+                  <div class="col-2 clickable" name="clickable">
+                    <span class="badge"></span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="col-3">
-              <span class="badge">2</span>
-              <img src="./images/card-tucan.svg" alt="card" />
-            </div>
-            <div class="col-3">
-              <img src="./images/card-large.svg" alt="card" />
-            </div>
-            <div class="col-3"></div>
+            <a
+              class="carousel-control-prev"
+              href="#carouselExampleControls"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carouselExampleControls"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
           </div>
+
           <div class="row">
             <div class="col justify-content-end d-flex">
               <button class="end-round-btn" type="button">
@@ -71,103 +149,9 @@
           </div>
         </div>
         <div class="col-8 board">
-          <div class="row">
-            <div class="col-2 variable">
-              <div class="row">
-                <div class="col-12">
-                  <img src="./images/card-owl.svg" alt="card" />
-                </div>
-
-                <div class="col-12"></div>
-
-                <div class="col-12"></div>
-
-                <div class="col-12">
-                  <span class="badge">2</span>
-                  <img src="./images/card-parrot.svg" alt="card" />
-                </div>
-              </div>
-            </div>
-            <div class="col-6 constant">
-              <div class="row">
-                <div class="col-4">
-                  <span class="badge">2</span>
-                  <img src="./images/card-muckinbird.svg" alt="card" />
-                </div>
-                <div class="col-4">
-                  <span class="badge">2</span>
-                  <img src="./images/card-tucan.svg" alt="card" />
-                </div>
-                <div class="col-4">
-                  <img src="./images/card-large.svg" alt="card" />
-                </div>
-
-                <div class="col-4">
-                  <img src="./images/card-large.svg" alt="card" />
-                </div>
-
-                <div class="col-4">
-                  <img src="./images/card-duck.svg" alt="card" />
-                </div>
-
-                <div class="col-4">
-                  <img src="./images/card-bird.svg" alt="card" />
-                </div>
-
-                <div class="col-4">
-                  <img src="./images/card-flamingo.svg" alt="card" />
-                </div>
-
-                <div class="col-4">
-                  <img src="./images/card-owl.svg" alt="card" />
-                </div>
-
-                <div class="col-4">
-                  <img src="./images/card-duck.svg" alt="card" />
-                </div>
-
-                <div class="col-4">
-                  <img src="./images/card-large.svg" alt="card" />
-                </div>
-
-                <div class="col-4">
-                  <img src="./images/card-owl.svg" alt="card" />
-                </div>
-
-                <div class="col-4">
-                  <img src="./images/card-tucan.svg" alt="card" />
-                </div>
-              </div>
-            </div>
-
-            <div class="col-2 variable">
-              <div class="row">
-                <div class="col-12"></div>
-
-                <div class="col-12"></div>
-
-                <div class="col-12">
-                  <span class="badge">2</span>
-                  <img src="./images/card-muckinbird.svg" alt="card" />
-                </div>
-                <div class="col-12"></div>
-              </div>
-            </div>
-            <div class="col-2 left">
-              <div class="row">
-                <h4>Restantes</h4>
-                <div class="col-12">
-                  <span class="badge">73</span>
-                  <img src="./images/back.svg" alt="card" />
-                </div>
-
-                <h4>Descarte</h4>
-                <div class="col-12">
-                  <span class="badge">0</span>
-                  <img src="./images/back.svg" alt="card" />
-                </div>
-              </div>
-            </div>
+          <div class="lefties back"><span class="badge"></span></div>
+          <div class="row justify-content-center">
+            <div class="col-8 col-xl-8 col-lg-12 board-content"></div>
           </div>
         </div>
       </div>
@@ -180,5 +164,25 @@
         </div>
       </div>
     </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="./js/cards.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/game.js"></script>
   </body>
 </html>
