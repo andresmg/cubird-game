@@ -21,7 +21,14 @@
           <img src="./images/logo.svg" alt="logo cubird" />
           <p>Stephan Alexander</p>
 
-          <button class="start-btn" type="button">Nueva partida</button>
+          <button
+            class="start-btn"
+            type="button"
+            data-toggle="modal"
+            data-target="#getPlayersModal"
+          >
+            Nueva partida
+          </button>
           <button
             type="button"
             class="txt-link"
@@ -35,7 +42,10 @@
     </div>
     <div class="container-fluid">
       <div class="row copyright">
-        <div class="col">Ilustraciones: Kristiaan Der Nerderlanden</div>
+        <div class="col">
+          Cubirds by Stefan Alexander | Ilustrado por Kristiaan Der Nerderlanden
+          | Editado por Catch Up Games
+        </div>
         <div class="col text-right">
           Desarrollado por Andrés Martínez @ 2020
         </div>
@@ -68,13 +78,13 @@
       id="rulesModal"
       tabindex="-1"
       role="dialog"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="rulesModalLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Reglas del juego</h5>
+            <h5 class="modal-title" id="rulesModalLabel">Reglas del juego</h5>
             <button
               type="button"
               class="close"
@@ -86,6 +96,37 @@
           </div>
           <div class="modal-body">
             Descripción
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="getPlayersModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="getPlayersModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="bird"></div>
+            <h4>Introduzca el nombre de los jugadores</h4>
+            <form id="players-names" action="game.html">
+              <label>
+                Jugador 1:
+              </label>
+              <input class="player-input" type="text" name="player1" />
+
+              <label> Jugador 2:</label>
+              <input class="player-input" type="text" name="player2" />
+
+              <button class="start-btn get-names" type="submit">
+                Continuar
+              </button>
+            </form>
           </div>
         </div>
       </div>

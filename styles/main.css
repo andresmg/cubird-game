@@ -503,6 +503,7 @@ body {
   background: url(../images/fly-01.svg) no-repeat right bottom/contain;
   -webkit-animation: random-rigth 3s ease infinite;
           animation: random-rigth 3s ease infinite;
+  z-index: 1;
 }
 
 .allBirds .fly-02 {
@@ -514,6 +515,7 @@ body {
   background: url(../images/fly-02.svg) no-repeat right bottom/contain;
   -webkit-animation: random-left 8s ease infinite;
           animation: random-left 8s ease infinite;
+  z-index: 1;
 }
 
 .allBirds .fly-03 {
@@ -524,6 +526,7 @@ body {
   height: 4rem;
   background: url(../images/fly-03.svg) no-repeat right bottom/contain;
   animation: random-left 6s ease reverse infinite;
+  z-index: 1;
 }
 
 .modal {
@@ -543,6 +546,53 @@ body {
 .modal .modal-content h5 {
   font-size: 3rem;
   color: #ffffff;
+}
+
+#getPlayersModal {
+  background: #6cb0b9 url(../images/player-bg.svg) repeat-x left bottom/contain;
+}
+
+#getPlayersModal .modal-body,
+#getPlayersModal form,
+#getPlayersModal label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#getPlayersModal .modal-body {
+  padding: 2rem;
+  position: relative;
+}
+
+#getPlayersModal .modal-body .bird {
+  width: 6rem;
+  height: 6rem;
+  background: url(../images/bird.svg) no-repeat center bottom/contain;
+  position: absolute;
+  bottom: -3px;
+  right: 1rem;
+}
+
+#getPlayersModal .modal-body label {
+  font-size: 1.6rem;
+  margin: 1rem 0;
+  color: #6cb0b9;
+}
+
+#getPlayersModal .modal-body input {
+  padding: 1.5rem 1rem;
+  outline: none;
+  border: 0.1rem solid #6cb0b9;
+  font-size: 1.6rem;
+  color: #6cb0b9;
 }
 
 .owl {
@@ -589,7 +639,7 @@ body {
   position: relative;
 }
 
-.board .lefties {
+.board .deck {
   right: 2rem;
   width: 14rem;
   position: absolute;
@@ -618,8 +668,13 @@ body {
 }
 
 .board-content > .gameRow [class*="col-"] {
-  border: 1px dotted #6cb0b9;
+  border: 2px dotted #6cb0b9;
   background-color: #ffffff;
+}
+
+.board-content > .gameRow [class*="col-"].clickable:hover {
+  border: 2px dotted #5659ba;
+  cursor: pointer;
 }
 
 .cards {
@@ -627,13 +682,20 @@ body {
   display: -ms-flexbox;
   display: flex;
   min-height: 25vh;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .cards > [class*="col-"] {
-  border: 1px dotted #ffffff;
+  border: 2px dotted #ffffff;
   background-color: #86d2ee;
   margin: 1rem 2rem;
   background-position: top center;
+}
+
+.cards > [class*="col-"]:hover {
+  border: 2px dotted #5659ba;
+  cursor: pointer;
 }
 
 .badge {
@@ -691,6 +753,10 @@ body {
 
 .players .end-round-btn:focus {
   outline: none;
+}
+
+.players .player-block:last-child {
+  display: none;
 }
 
 .carousel .carousel-inner {

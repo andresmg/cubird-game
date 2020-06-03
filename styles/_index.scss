@@ -232,6 +232,7 @@
     height: 4rem;
     background: url(../images/fly-01.svg) no-repeat right bottom / contain;
     animation: random-rigth 3s ease infinite;
+    z-index: 1;
   }
 
   .fly-02 {
@@ -242,6 +243,7 @@
     height: 4rem;
     background: url(../images/fly-02.svg) no-repeat right bottom / contain;
     animation: random-left 8s ease infinite;
+    z-index: 1;
   }
 
   .fly-03 {
@@ -252,6 +254,7 @@
     height: 4rem;
     background: url(../images/fly-03.svg) no-repeat right bottom / contain;
     animation: random-left 6s ease reverse infinite;
+    z-index: 1;
   }
 }
 
@@ -267,6 +270,47 @@
     h5 {
       font-size: 3rem;
       color: $white;
+    }
+  }
+}
+
+#getPlayersModal {
+  background: $main-blue url(../images/player-bg.svg) repeat-x left bottom /
+    contain;
+
+  .modal-body,
+  form,
+  label {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .modal-body {
+    padding: 2rem;
+    position: relative;
+
+    .bird {
+      width: 6rem;
+      height: 6rem;
+      background: url(../images/bird.svg) no-repeat center bottom/contain;
+      position: absolute;
+      bottom: -3px;
+      right: 1rem;
+    }
+
+    label {
+      font-size: 1.6rem;
+      margin: 1rem 0;
+      color: $main-blue;
+    }
+
+    input {
+      padding: 1.5rem 1rem;
+      outline: none;
+      border: 0.1rem solid $main-blue;
+      font-size: 1.6rem;
+      color: $main-blue;
     }
   }
 }

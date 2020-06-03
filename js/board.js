@@ -1,34 +1,110 @@
 class Board {
   constructor(cards) {
     this.cards = cards
+    this.playersNames = []
   }
 
-  shuffleCards() {
-    if (!this.cards) return undefined
-
-    for (let i = 0; i < this.cards.length; i++) {
-      const num = Math.floor(Math.random() * i)
-      const tempArray = this.cards[i]
-      this.cards[i] = this.cards[num]
-      this.cards[num] = tempArray
-    }
+  remainDeck() {
+    const deck = document.querySelector(".deck .badge")
+    deck.innerText = this.cards.length
   }
 
-  updateLefties() {
-    const lefties = document.querySelector(".lefties .badge")
-    lefties.innerText = this.cards.length
-  }
-
-  addClickable() {
-    const clickable = document.createElement("div")
-    clickable.classList.add("col-2", "clickable")
+  addEmptyCard() {
+    const emptyCard = document.createElement("div")
+    emptyCard.classList.add("col-2", "clickable")
 
     const badge = document.createElement("span")
     badge.className = "badge"
 
-    clickable.appendChild(badge)
+    emptyCard.appendChild(badge)
 
-    return clickable
+    return emptyCard
+  }
+
+  getPlayersNames() {
+    const url = new URL(window.location.href)
+    this.playersNames.push(url.searchParams.get("player1"))
+    this.playersNames.push(url.searchParams.get("player2"))
+  }
+
+  initPlayersDeck() {
+    const playerDeck = document.querySelector(".player-deck")
+    let i = 1
+    this.playersNames.forEach((el) => {
+      const playerBlock = document.createElement("div")
+      playerBlock.classList.add("player-block")
+      const player = document.createElement("h1")
+      if (el) {
+        player.innerText = `Cartas de ${el}`
+      } else {
+        player.innerText = `Cartas del jugador ${i}`
+        i++
+      }
+
+      playerDeck.appendChild(playerBlock)
+      playerBlock.appendChild(player)
+
+      const rowCards = document.createElement("div")
+      rowCards.classList.add("row", "cards")
+
+      playerBlock.appendChild(rowCards)
+
+      for (i = 0; i < 8; i++) {
+        const birdCard = document.createElement("div")
+        birdCard.classList.add("col-2", this.cards[i].name)
+        birdCard.setAttribute("name", this.cards[i].name)
+
+        const badge = document.createElement("span")
+        badge.className = "badge"
+
+        birdCard.appendChild(badge)
+        this.cards.shift()
+        rowCards.appendChild(birdCard)
+      }
+
+      this.remainDeck()
+    })
+  }
+
+  initPlayersBands() {
+    const carouselInner = document.querySelector(".carousel-inner")
+    let i = 1
+    this.playersNames.forEach((el) => {
+      const carouselItem = document.createElement("div")
+      carouselItem.classList.add("carousel-item")
+      const player = document.createElement("h4")
+      if (el) {
+        player.innerText = `Bandadas de ${el}`
+      } else {
+        player.innerText = `Bandadas del jugador ${i}`
+        i++
+      }
+
+      carouselInner.appendChild(carouselItem)
+      carouselItem.appendChild(player)
+
+      const birdCard = document.createElement("div")
+      birdCard.classList.add("col-2", this.cards[0].name)
+      birdCard.setAttribute("name", this.cards[0].name)
+
+      const badge = document.createElement("span")
+      badge.className = "badge"
+
+      birdCard.appendChild(badge)
+      this.cards.shift()
+
+      const rowCards = document.createElement("div")
+      rowCards.classList.add("row", "cards")
+
+      carouselItem.appendChild(rowCards)
+      rowCards.appendChild(birdCard)
+
+      for (let i = 0; i < 7; i++) {
+        rowCards.appendChild(this.addEmptyCard())
+      }
+    })
+
+    document.querySelector(".carousel-item").classList.add("active")
   }
 
   addCardsRow() {
@@ -38,33 +114,26 @@ class Board {
       const gameRow = document.createElement("div")
       gameRow.classList.add("row", "gameRow")
 
-      gameRow.appendChild(this.addClickable())
+      gameRow.appendChild(this.addEmptyCard())
 
-      if (this.cards.length <= 110) {
-        for (let i = 0; i < 3; i++) {
-          const birdCard = document.createElement("div")
-          birdCard.classList.add("col-2", this.cards[i].name)
-          birdCard.setAttribute("name", this.cards[i].name)
+      for (let j = 0; j < 3; j++) {
+        const birdCard = document.createElement("div")
+        birdCard.classList.add("col-2", this.cards[j].name)
+        birdCard.setAttribute("name", this.cards[j].name)
 
-          const badge = document.createElement("span")
-          badge.className = "badge"
+        const badge = document.createElement("span")
+        badge.className = "badge"
 
-          birdCard.appendChild(badge)
-          gameRow.appendChild(birdCard)
+        birdCard.appendChild(badge)
+        this.cards.shift()
 
-          boardContent.appendChild(gameRow)
-
-          this.cards.shift()
-        }
-      } else {
-        throw new Error(
-          "YA NO QUEDAN MÁS CARTAS EN EL MAZO, COGER DEL MAZO DE DESECHADOS"
-        )
+        gameRow.appendChild(birdCard)
+        boardContent.appendChild(gameRow)
       }
 
-      gameRow.appendChild(this.addClickable())
+      gameRow.appendChild(this.addEmptyCard())
     }
 
-    this.updateLefties()
+    this.remainDeck()
   }
 }

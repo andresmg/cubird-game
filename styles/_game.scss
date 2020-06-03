@@ -42,7 +42,7 @@
   background: $white url(../images/grass-bg.svg) repeat-x left bottom;
   position: relative;
 
-  .lefties {
+  .deck {
     right: 2rem;
     width: 14rem;
     position: absolute;
@@ -61,8 +61,15 @@
     justify-content: space-between;
 
     [class*="col-"] {
-      border: 1px dotted $main-blue;
+      border: 2px dotted $main-blue;
       background-color: $white;
+
+      &.clickable {
+        &:hover {
+          border: 2px dotted $purple;
+          cursor: pointer;
+        }
+      }
     }
   }
 }
@@ -70,12 +77,18 @@
 .cards {
   display: flex;
   min-height: 25vh;
+  justify-content: space-around;
 
   > [class*="col-"] {
-    border: 1px dotted $white;
+    border: 2px dotted $white;
     background-color: $light-blue;
     margin: 1rem 2rem;
     background-position: top center;
+
+    &:hover {
+      border: 2px dotted $purple;
+      cursor: pointer;
+    }
   }
 }
 
@@ -128,6 +141,10 @@
     &:focus {
       outline: none;
     }
+  }
+
+  .player-block:last-child {
+    display: none;
   }
 }
 
