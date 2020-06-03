@@ -74,9 +74,9 @@ class Board {
       carouselItem.classList.add("carousel-item")
       const player = document.createElement("h4")
       if (el) {
-        player.innerText = `Bandadas de ${el}`
+        player.innerText = `Colecciones de ${el}`
       } else {
-        player.innerText = `Bandadas del jugador ${i}`
+        player.innerText = `Colecciones del jugador ${i}`
         i++
       }
 

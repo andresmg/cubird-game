@@ -84,7 +84,7 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="rulesModalLabel">Reglas del juego</h5>
+            <h1 class="modal-title" id="rulesModalLabel">Reglas del juego</h1>
             <button
               type="button"
               class="close"
@@ -95,8 +95,37 @@
             </button>
           </div>
           <div class="modal-body">
-            Descripción
+            <h5>Objetivo del juego</h5>
+            <p>
+              El ganador será el primer jugador que cumpla con un de estas dos
+              condiciones:
+            </p>
+            <h5 class="obj">Tener 7 especies diferentes</h5>
+            <img
+              src="./images/siete-especies.svg"
+              alt="objetivo siete especies"
+            />
+            <p class="text-center">O BIEN</p>
+            <h5 class="obj">Tener 2 especies diferentes, con 3 pájaros en cada una</h5>
+            <img src="./images/dos-especies.svg" alt="objetivo dos especies" height="160" />
+
+            <h5>Resumen del juego</h5>
+            <p>Se juega en rondas sucesivas. Al comienzo de cada ronda, cada jugador comienza con 8 cartas en la mano. En su turno, el jugador <b>debe</b> bajar uno o más pajaros de la misma especie de su mano, y después <b>puede</b> completar una bandada. El jugador escoge un tipo de pájaro de su mano y tiene que bajar <b>todos los pájaros de esa especie</b> que tenga en la mano. Coloca la carta en un bloque vacío de su elección que se encuentre a la izquierda o derecha de cada fila. Si el jugador baja una especie de pájaro que ya se encuentra en la fila, se lleva a la mano <b>todas las cartas</b> entre los pájaros de esa especie y los que acaba de colocar. </p>
+            <p>Después, se juntan los pájaros que quedan en la fila añadiédose automáticamente el número de pájaros de esa especie disponibles en la fila. En caso de quedar un sola especie en la fila, se añade automáticamente una carta del mazo de cartas restantes.</p>
+
+            <h5>Completar una bandada</h5>
+            <p>Una bandada es un conjunto de pájaros de la misma especie. Completar una bandada permite al jugador añadir una o dos cartas a su colección.</p>
+            <p>Cada especie tiene en su esquina superior derecha dos números, el de la izquierda es el número de la bandada pequeña y el de la derecha es el número de la bandada grande.</p>
+            <p>Si un jugador tiene en su haber, un número de pajaros de la misma especie mayor o igual al número de la bandada pequeña, pero menor que le número de la bandada grande,se añade un pájaro de esa especie a su colección y se descarta el resto de los pájaros al mazo de descarte. Si el jugador tiene en su haber un número de pájaros mayor o igual al número de la bandada grande, se añaden dos pájaros de esa especie a su colección y el resto va al mazo de descarte.</p>
+            <p><b></b>Si un jugador se queda sin cartas durante su turno</b>, la ronda finaliza, el otro jugador entrega todas sus cartas al mazo de descarte y se reparten 8 cartas nuevas a cada jugador. Las cartas del centro y las colecciones de cada jugador se mantienen.</p>
+            
+            <h5>Fin de la partida</h5>
+            <p>Si un jugador tiene en su colección <b>7 especies diferentes</b> (de las 8 existentes), o <b>2 especies con al menos 3 pájaros en cada una</b> al final de su turno, gana la partida. Si al final de una ronda, es <b>imposible repartir 8 cartas a cada uno de los jugadores,</b> el jugador con el mayor número de pájaros en su colección, gana la partida.</p>
+            
+            <small>Cubirds es un juego diseñado por Stefan Alexander, ilustrado por Kristiaan der Nerderlanden, publicado por Catch Up Games, distribuido por Blackrock Games y editado en español por Maldito Games.</small>
           </div>
+
+          <div class="modal-footer"></div>
         </div>
       </div>
     </div>

@@ -595,6 +595,55 @@ body {
   color: #6cb0b9;
 }
 
+#rulesModal .modal-header {
+  background: #ffffff;
+}
+
+#rulesModal .modal-header .close span {
+  font-size: 3rem;
+}
+
+#rulesModal .modal-header h1 {
+  color: #6cb0b9;
+  font-size: 1.8rem;
+}
+
+#rulesModal .modal-body {
+  text-align: center;
+  color: #ffffff;
+  background: #6cb0b9;
+}
+
+#rulesModal .modal-body p {
+  text-align: left;
+}
+
+#rulesModal .modal-body h5 {
+  font-size: 1.4rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+#rulesModal .modal-body h5.obj {
+  text-align: center;
+}
+
+#rulesModal .modal-body p,
+#rulesModal .modal-body b {
+  font-size: 1.4rem;
+}
+
+#rulesModal .modal-body img {
+  margin: 3rem auto;
+  text-align: center;
+}
+
+#rulesModal .modal-footer {
+  padding-bottom: 17rem;
+  background: #6cb0b9 url(../images/player-bg.svg) no-repeat center bottom/contain;
+}
+
 .owl {
   background: url(../images/card-owl.svg) no-repeat center center/cover;
 }
