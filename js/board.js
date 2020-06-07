@@ -429,6 +429,10 @@ class Board {
 
         let playerBirds = currentPlayer.querySelectorAll("[name]")
         let currentId = selectedBtn.getAttribute("data-target")
+        let noYetMessage = document.querySelector(".no-yet")
+        if (noYetMessage) {
+          noYetMessage.remove()
+        }
 
         let push = false
         let playerBirdArr = []
@@ -439,8 +443,6 @@ class Board {
           const min = el.getAttribute("data-min")
           const span = parseInt(el.querySelector("span").innerText)
 
-          console.log(`${name} / ${min} / ${max} / ${span}`)
-
           if (span >= max) {
             push = true
             playerBirdArr.push(name)
@@ -450,6 +452,8 @@ class Board {
               shuffleCards(this.cards)
               this.remainDeck()
             }
+            currentPlayer.querySelector(`.cards [name = ${name}]`).remove()
+            currentPlayer.querySelector(".cards").appendChild(this.addEmptyCard())
           } else if (span >= min && span < max) {
             push = true
             playerBirdArr.push(name)
@@ -458,6 +462,8 @@ class Board {
               shuffleCards(this.cards)
               this.remainDeck()
             }
+            currentPlayer.querySelector(`.cards [name = ${name}]`).remove()
+            currentPlayer.querySelector(".cards").appendChild(this.addEmptyCard())
           }
         })
 
@@ -467,20 +473,48 @@ class Board {
           message.classList.add("col", "justify-content-end", "d-flex", "no-yet")
           message.innerText = "WAIT! you can't add to collection yet!"
           currentPlayer.appendChild(message)
+        } else {
+          let currentPlayerCollection = document.querySelectorAll(`.carousel-item.${currentId} .cards [name]`)
+          let currentCollection = document.querySelector(`.carousel-item.${currentId} .cards`)
+          currentCollection.innerHTML = ""
+
+          let currentPlayerCollectionArr = []
+          currentPlayerCollection.forEach((el) => {
+            currentPlayerCollectionArr.push(el.getAttribute("name"))
+          })
+          console.log(playerBirdArr)
+          console.log(currentPlayerCollectionArr)
+
+          let uniqueArr = playerBirdArr.concat(currentPlayerCollectionArr)
+          const birdObj = this.getRepeat(uniqueArr)
+          console.log(birdObj)
+
+          Object.entries(birdObj).forEach(([key, value]) => {
+            const birdCard = document.createElement("div")
+            birdCard.classList.add("col-2", key)
+            birdCard.setAttribute("name", key)
+
+            this.birdMinMax(birdCard, key)
+
+            const badge = document.createElement("span")
+            badge.innerText = 1
+
+            if (value > 1) {
+              badge.innerText = value
+              badge.className = "badge"
+            }
+
+            birdCard.appendChild(badge)
+            currentCollection.appendChild(birdCard)
+          })
+
+          const objLength = Object.keys(birdObj).length
+          if (!(objLength === 8)) {
+            for (let i = 0; i < 8 - objLength; i++) {
+              currentCollection.appendChild(this.addEmptyCard())
+            }
+          }
         }
-
-        let currentPlayerCollection = document.querySelectorAll(`.carousel-item.${currentId} .cards [name]`)
-
-        let currentPlayerCollectionArr = []
-        currentPlayerCollection.forEach((el) => {
-          currentPlayerCollectionArr.push(el.getAttribute("name"))
-        })
-        console.log(playerBirdArr)
-        console.log(currentPlayerCollectionArr)
-
-        let uniqueArr = playerBirdArr.concat(currentPlayerCollectionArr)
-
-        console.log(uniqueArr)
 
       })
     })
