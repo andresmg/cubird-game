@@ -236,15 +236,6 @@ body {
   }
 }
 
-@keyframes random-rigth {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -750,6 +741,10 @@ body {
 .cards > [class*="col-"]:hover {
   border: 2px dotted #5659ba;
   cursor: pointer;
+}
+
+span {
+  display: none;
 }
 
 .badge {
