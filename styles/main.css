@@ -743,6 +743,11 @@ body {
   cursor: pointer;
 }
 
+.cards > [class*="col-"].clickable:hover, .cards > [class*="col-"].disabled:hover {
+  border: 2px dotted #ffffff;
+  cursor: auto;
+}
+
 span {
   display: none;
 }
@@ -788,20 +793,39 @@ span {
   margin-bottom: 2rem;
 }
 
-.players .end-round-btn {
+.players .end-round-btn,
+.players .update-collection-btn {
   font-size: 1.4rem;
   background: #459b45;
   color: #ffffff;
   padding: 1rem;
   border: 0;
+  outline: none;
 }
 
-.players .end-round-btn:hover, .players .end-round-btn:active {
+.players .end-round-btn:active, .players .end-round-btn:focus,
+.players .update-collection-btn:active,
+.players .update-collection-btn:focus {
+  outline: none;
+}
+
+.players .end-round-btn.disabled,
+.players .update-collection-btn.disabled {
+  opacity: 0.5;
+}
+
+.players .end-round-btn.enabled,
+.players .update-collection-btn.enabled {
+  opacity: 1;
+}
+
+.players .end-round-btn.enabled:hover,
+.players .update-collection-btn.enabled:hover {
   background: #d4d754;
 }
 
-.players .end-round-btn:focus {
-  outline: none;
+.players .no-yet {
+  padding-top: 1rem;
 }
 
 .players .player-block:last-child {

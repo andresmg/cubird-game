@@ -82,6 +82,14 @@
       border: 2px dotted $purple;
       cursor: pointer;
     }
+
+    &.clickable,
+    &.disabled {
+      &:hover {
+        border: 2px dotted $white;
+        cursor: auto;
+      }
+    }
   }
 }
 
@@ -123,21 +131,34 @@ span {
     margin-bottom: 2rem;
   }
 
-  .end-round-btn {
+  .end-round-btn,
+  .update-collection-btn {
     font-size: 1.4rem;
     background: $main-green;
     color: $white;
     padding: 1rem;
     border: 0;
+    outline: none;
 
-    &:hover,
-    &:active {
-      background: $lime;
-    }
-
-    &:focus {
+    &:active, &:focus {
       outline: none;
     }
+
+    &.disabled {
+      opacity: 0.5;
+    }
+
+    &.enabled {
+      opacity: 1;
+
+      &:hover {
+        background: $lime;
+      }
+    }
+  }
+
+  .no-yet {
+    padding-top: 1rem;
   }
 
   .player-block:last-child {
