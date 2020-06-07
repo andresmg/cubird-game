@@ -63,13 +63,6 @@
     [class*="col-"] {
       border: 2px dotted $main-blue;
       background-color: $white;
-
-      &.clickable {
-        &:hover {
-          border: 2px dotted $purple;
-          cursor: pointer;
-        }
-      }
     }
   }
 }
@@ -148,6 +141,25 @@
   }
 }
 
+.selected {
+  position: relative;
+
+  &:before {
+    content: "";
+    background: url(../images/selected.svg) no-repeat center center / cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.posibles {
+  background: url(../images/posibles.svg) no-repeat center center / cover;
+  cursor: pointer;
+}
+
 .carousel {
   .carousel-inner {
     padding: 10px 20px;
@@ -163,5 +175,13 @@
 
   .carousel-control-prev {
     left: -40px;
+  }
+  .cards {
+    > [class*="col-"] {
+      &:hover {
+        border: 2px dotted $white;
+        cursor: auto;
+      }
+    }
   }
 }

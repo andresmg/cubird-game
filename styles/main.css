@@ -236,6 +236,15 @@ body {
   }
 }
 
+@keyframes random-rigth {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -722,11 +731,6 @@ body {
   background-color: #ffffff;
 }
 
-.board-content > .gameRow [class*="col-"].clickable:hover {
-  border: 2px dotted #5659ba;
-  cursor: pointer;
-}
-
 .cards {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -809,6 +813,25 @@ body {
   display: none;
 }
 
+.selected {
+  position: relative;
+}
+
+.selected:before {
+  content: "";
+  background: url(../images/selected.svg) no-repeat center center/cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.posibles {
+  background: url(../images/posibles.svg) no-repeat center center/cover;
+  cursor: pointer;
+}
+
 .carousel .carousel-inner {
   padding: 10px 20px;
 }
@@ -823,5 +846,10 @@ body {
 
 .carousel .carousel-control-prev {
   left: -40px;
+}
+
+.carousel .cards > [class*="col-"]:hover {
+  border: 2px dotted #ffffff;
+  cursor: auto;
 }
 /*# sourceMappingURL=main.css.map */

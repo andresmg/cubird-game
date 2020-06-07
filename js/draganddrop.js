@@ -13,11 +13,6 @@ class Board {
     const emptyCard = document.createElement("div")
     emptyCard.classList.add("col-2", "clickable")
 
-    const badge = document.createElement("span")
-    badge.className = "badge"
-
-    emptyCard.appendChild(badge)
-
     return emptyCard
   }
 
@@ -189,9 +184,13 @@ class Board {
 
     for (let i = 0; i < 4; i++) {
       const gameRow = document.createElement("div")
-      gameRow.classList.add("row", "gameRow")
+      gameRow.classList.add("row", "gameRow", "player-block")
 
-      gameRow.appendChild(this.addEmptyCard())
+      const leftEmptyCard = document.createElement("div")
+      leftEmptyCard.classList.add("col-2", "clickable")
+      leftEmptyCard.setAttribute("name", "")
+
+      gameRow.appendChild(leftEmptyCard)
 
       let birdsArr = []
       for (let i = 0; i < 9; i++) {
@@ -236,96 +235,90 @@ class Board {
         boardContent.appendChild(gameRow)
       }
 
-      gameRow.appendChild(this.addEmptyCard())
+      const rightEmptyCard = document.createElement("div")
+      rightEmptyCard.classList.add("col-2", "clickable")
+      rightEmptyCard.setAttribute("name", "")
+
+      gameRow.appendChild(rightEmptyCard)
     }
 
     this.remainDeck()
   }
 
-  initCollectBirds() {
-    let selectedBird
-    let current
+  initDragDrop() {
+    let dragged
+    document.querySelectorAll(".player-block [name]").forEach((el) => {
+      el.setAttribute("draggable", "true")
 
-    const playerBirds = document.querySelectorAll(".player-block [name]")
-    playerBirds.forEach((el) => {
+      el.addEventListener("drag", function (event) {}, false)
+
       el.addEventListener(
-        "click",
+        "dragstart",
         (event) => {
-          selectedBird = event.target
-
+          dragged = event.target
+          console.log(dragged)
           //ESTILOS DE LA TARJETA QUE QUEDA EN EL DECK DEL JUGADOR
-          const selectedCard = document.querySelector(".selected")
-          if (selectedCard) {
-            selectedCard.classList.remove("selected")
-          }
-          selectedBird.classList.add("selected")
-          const nameAtt = selectedBird.getAttribute("name")
+          event.dataTransfer.setData("text/plain", null)
+        },
+        false
+      )
 
-          const posibles = document.querySelectorAll(
-            `.board-content .${nameAtt}`
-          )
+      el.addEventListener(
+        "dragend",
+        function (event) {
+          //CONVERTIR EL BIRDCARD A CLICKABLE
+        },
+        false
+      )
 
-          const resetPosibles = document.querySelectorAll(".posibles")
+      el.addEventListener(
+        "dragover",
+        function (event) {
+          // prevent default to allow drop
+          event.preventDefault()
+        },
+        false
+      )
 
-          if (posibles) {
-            resetPosibles.forEach((el) => {
-              el.classList.remove("posibles")
-            })
-            posibles.forEach((el) => {
-              const posiblesParents = el.closest(".gameRow")
-              const clickableSons = posiblesParents.querySelectorAll(
-                ".clickable"
-              )
-
-              clickableSons.forEach((el) => {
-                el.classList.add("posibles")
-
-                el.addEventListener(
-                  "click",
-                  (event) => {
-                    current = event.target
-
-                    const getBirds = current
-                      .closest(".gameRow")
-                      .querySelectorAll("[name]")
-
-                    console.log(playerBirds)
-                    console.log(getBirds)
-
-                    getBirds.forEach((el) => {
-                      //se limpia la fila seleccionada
-                      el.remove()
-
-                      //se añade tres nuevas cartas del deck
-
-                      const gameRow = current.closest(".gameRow")
-                      gameRow.appendChild(this.addBirdCard(this.cards))
-                      this.remainDeck()
-                    })
-
-                    //se añade un empty a la fila
-                    current.closest(".gameRow").appendChild(this.addEmptyCard())
-
-                    //se elimina el primer clickable de la fila, se setean los posibles y el selected del jugador
-                    current.closest(".clickable").remove()
-                    const cleanPosibles = document.querySelectorAll(".posibles")
-                    cleanPosibles.forEach((el) => {
-                      el.classList.remove("posibles")
-                    })
-
-                    const selectedCard = document.querySelector(".selected")
-                    selectedCard.classList.remove("selected")
-                  },
-                  false
-                )
-              })
-            })
+      el.addEventListener(
+        "dragenter",
+        function (event) {
+          // highlight potential drop target when the draggable element enters it
+          event.target.style.background = "purple"
+          if (event.target.className == "clickable") {
           }
         },
         false
       )
-    })
 
-    //ELIMINAR EVENT LISTENER DEL JUGADOR UNA VEZ JUGADA LA RONDA
+      el.addEventListener(
+        "dragleave",
+        function (event) {
+          // reset background of potential drop target when the draggable element leaves it
+          event.target.style.background = ""
+          if (event.target.className == "clickable") {
+          }
+        },
+        false
+      )
+
+      el.addEventListener(
+        "drop",
+        function (event) {
+          // prevent default action (open as link for some elements)
+          event.preventDefault()
+          // move dragged elem to the selected drop target
+
+          dragged.parentNode.removeChild(dragged)
+
+          console.log(dragged.parentNode)
+
+          event.target.appendChild(dragged)
+
+          console.log(event.target)
+        },
+        false
+      )
+    })
   }
 }
