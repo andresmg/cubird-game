@@ -36,10 +36,9 @@
 }
 
 .board {
-  background: $white;
   border-radius: 0 2rem 2rem 0rem;
   padding: 3rem;
-  background: $white url(../images/grass-bg.svg) repeat-x left bottom;
+  background: #ebf1ff url(../images/grass-bg.svg) repeat-x left bottom;
   position: relative;
 
   .deck {
@@ -62,7 +61,7 @@
 
     [class*="col-"] {
       border: 2px dotted $main-blue;
-      background-color: $white;
+      background-color: rgba($white, 0.4);
     }
   }
 }
@@ -161,7 +160,7 @@ span {
     padding-top: 1rem;
   }
 
-  .player-block:last-child {
+  .hide {
     display: none;
   }
 }

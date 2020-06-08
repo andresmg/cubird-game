@@ -503,7 +503,6 @@ body {
   background: url(../images/fly-01.svg) no-repeat right bottom/contain;
   -webkit-animation: random-rigth 3s ease infinite;
           animation: random-rigth 3s ease infinite;
-  z-index: 1;
 }
 
 .allBirds .fly-02 {
@@ -515,7 +514,6 @@ body {
   background: url(../images/fly-02.svg) no-repeat right bottom/contain;
   -webkit-animation: random-left 8s ease infinite;
           animation: random-left 8s ease infinite;
-  z-index: 1;
 }
 
 .allBirds .fly-03 {
@@ -526,7 +524,6 @@ body {
   height: 4rem;
   background: url(../images/fly-03.svg) no-repeat right bottom/contain;
   animation: random-left 6s ease reverse infinite;
-  z-index: 1;
 }
 
 .modal {
@@ -682,10 +679,9 @@ body {
 }
 
 .board {
-  background: #ffffff;
   border-radius: 0 2rem 2rem 0rem;
   padding: 3rem;
-  background: #ffffff url(../images/grass-bg.svg) repeat-x left bottom;
+  background: #ebf1ff url(../images/grass-bg.svg) repeat-x left bottom;
   position: relative;
 }
 
@@ -719,7 +715,7 @@ body {
 
 .board-content > .gameRow [class*="col-"] {
   border: 2px dotted #6cb0b9;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .cards {
@@ -828,7 +824,7 @@ span {
   padding-top: 1rem;
 }
 
-.players .player-block:last-child {
+.players .hide {
   display: none;
 }
 

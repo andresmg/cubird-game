@@ -97,11 +97,9 @@ class Board {
 
     initPlayersDeck() {
         const playerDeck = document.querySelector(".player-deck")
-
         let i = 1
         this.playersNames.forEach((el) => {
             const playerBlock = document.createElement("div")
-            console.log(i)
             playerBlock.classList.add("player-block", `player${i}`)
 
             if (i === 2) {
@@ -111,7 +109,6 @@ class Board {
             const player = document.createElement("h1")
             if (el) {
                 player.innerText = `${el}'s deck`
-                i++
             } else {
                 player.innerText = `Player ${i}'s deck`
                 i++
@@ -271,146 +268,6 @@ class Board {
         this.remainDeck()
     }
 
-    addCardListener(event, playerBirds, currentPlayer) {
-        let selectedBird
-        selectedBird = event.target
-
-        let selectedCard = document.querySelector(".selected")
-        if (selectedCard) {
-            selectedCard.classList.remove("selected")
-        }
-        selectedBird.classList.add("selected")
-        let nameAtt = selectedBird.getAttribute("name")
-
-        let posibles = document.querySelectorAll(`.board-content .${nameAtt}`)
-
-        let resetPosibles = document.querySelectorAll(".posibles")
-
-        //Si existe una fila seleccionada, se resetea la clase posibles
-        if (posibles) {
-            resetPosibles.forEach((currentPlayerCard) => {
-                currentPlayerCard.classList.remove("posibles")
-            })
-
-            //Si no existe una fila seleccionada:
-            posibles.forEach((currentPlayerCard) => {
-                let posiblesParents = currentPlayerCard.closest(".gameRow")
-                let clickableSons = posiblesParents.querySelectorAll(".clickable")
-
-                clickableSons.forEach((clickableSonRow) => {
-                    clickableSonRow.classList.add("posibles")
-
-                    //Para cada clickable de la fila se añade un event click
-                    clickableSonRow.addEventListener(
-                        "click",
-                        (event) => {
-                            let current
-                            current = event.target
-                            console.log(current)
-
-                            let selectedBirdsRow = current.closest(".gameRow").querySelectorAll("[name]")
-
-                            selectedBirdsRow.forEach((birdInRow) => {
-                                //se limpia la fila seleccionada
-                                birdInRow.remove()
-
-                                //se añade tres nuevas cartas del deck y se actualiza el deck
-                                let gameRow = current.closest(".gameRow")
-                                gameRow.appendChild(this.addBirdCard(this.cards))
-                                this.remainDeck()
-                            })
-
-                            //se añade un empty a la fila
-                            current.closest(".gameRow").appendChild(this.addEmptyCard())
-
-                            //se elimina el primer clickable de la fila, se setean los posibles y el selected del jugador
-                            current.closest(".clickable").remove()
-                            let cleanPosibles = document.querySelectorAll(".posibles")
-                            cleanPosibles.forEach((clickableSonRow) => {
-                                clickableSonRow.classList.remove("posibles")
-                            })
-
-                            let selectedCard = document.querySelector(".selected")
-                            selectedCard.classList.remove("selected")
-
-                            //Se recogen los pájaros del jugador
-                            let playerBirdsArr = []
-                            playerBirds.forEach((el) => {
-                                playerBirdsArr.push(el.getAttribute("name"))
-                            })
-
-                            //Se recogen los pájaros de la fila seleccionada
-                            let selectedBirdsRowArr = []
-                            selectedBirdsRow.forEach((el) => {
-                                selectedBirdsRowArr.push(el.getAttribute("name"))
-                            })
-
-                            let newBirdToPlayer = []
-
-                            selectedBirdsRowArr.forEach((rowBirdName) => {
-                                if (playerBirdsArr.includes(rowBirdName)) {
-                                    //se actualizan las cartas iguales del jugador
-                                    let currentBirdSpan = parseInt(currentPlayer.querySelector(`.${rowBirdName} span`).innerText)
-
-                                    currentPlayer.querySelector(`.${rowBirdName} span`).innerText = currentBirdSpan + 1
-
-                                    currentPlayer.querySelector(`.${rowBirdName} span`).classList.add("badge")
-
-                                } else {
-                                    //Si no existe se añade nuevo pájaro al jugador
-                                    selectedBirdsRowArr.forEach((el) => {
-                                        if (!playerBirdsArr.includes(el)) {
-                                            newBirdToPlayer.push(el)
-                                        }
-                                    })
-                                }
-                            })
-
-                            let newPlayerBirds = [...new Set(newBirdToPlayer)]
-
-                            newPlayerBirds.forEach((el) => {
-                                let birdCard = document.createElement("div")
-                                birdCard.classList.add("col-2", el)
-                                birdCard.classList.remove("selected")
-                                birdCard.setAttribute("name", el)
-                                birdCard.addEventListener("click", (e) => this.addCardListener(e, playerBirds, currentPlayer))
-                                this.birdMinMax(birdCard, el)
-
-                                let badge = document.createElement("span")
-                                badge.innerText = 1
-
-                                birdCard.appendChild(badge)
-
-                                currentPlayer.querySelector(".cards").appendChild(birdCard)
-                            })
-
-                            currentPlayer.querySelectorAll(".clickable").forEach((el) => el.remove())
-
-                            for (let i = 0; i < 8 - currentPlayer.querySelectorAll(".cards [name]").length; i++) {
-                                currentPlayer.querySelector(".cards").appendChild(this.addEmptyCard())
-                            }
-
-                            document.querySelectorAll("button").forEach((el) => {
-                                el.disabled = false
-                                el.classList.add("enabled")
-                                el.classList.remove("disabled")
-                            })
-
-                            // playerBirds.forEach((el) => {
-                            //   el.classList.add("disabled")
-                            // })
-
-                            //ELIMINAR el event listener
-                        },
-                        false
-                    )
-                })
-            })
-        }
-    }
-
-
-
     initCollectBirds() {
         let playerBlock = document.querySelector(".player-deck")
         let players = playerBlock.querySelectorAll(".player-block")
@@ -422,13 +279,148 @@ class Board {
 
 
             playerBirds.forEach((currentPlayerCard) => {
-                currentPlayerCard.addEventListener("click", (event) => this.addCardListener(event, playerBirds, currentPlayer), false)
+                currentPlayerCard.addEventListener("click", (event) => {
+                    selectedBird = event.target
+
+                    let selectedCard = document.querySelector(".selected")
+                    if (selectedCard) {
+                        selectedCard.classList.remove("selected")
+                    }
+                    selectedBird.classList.add("selected")
+                    let nameAtt = selectedBird.getAttribute("name")
+
+                    let posibles = document.querySelectorAll(`.board-content .${nameAtt}`)
+
+                    let resetPosibles = document.querySelectorAll(".posibles")
+
+                    //Si existe una fila seleccionada, se resetea la clase posibles
+                    if (posibles) {
+                        resetPosibles.forEach((currentPlayerCard) => {
+                            currentPlayerCard.classList.remove("posibles")
+                        })
+
+                        //Si no existe una fila seleccionada:
+                        posibles.forEach((currentPlayerCard) => {
+                            let posiblesParents = currentPlayerCard.closest(".gameRow")
+                            let clickableSons = posiblesParents.querySelectorAll(".clickable")
+
+                            clickableSons.forEach((clickableSonRow) => {
+                                clickableSonRow.classList.add("posibles")
+
+                                //Para cada clickable de la fila se añade un event click
+                                clickableSonRow.addEventListener(
+                                    "click",
+                                    (event) => {
+                                        current = event.target
+                                        console.log(current)
+
+                                        let selectedBirdsRow = current.closest(".gameRow").querySelectorAll("[name]")
+
+                                        selectedBirdsRow.forEach((birdInRow) => {
+                                            //se limpia la fila seleccionada
+                                            birdInRow.remove()
+
+                                            //se añade tres nuevas cartas del deck y se actualiza el deck
+                                            let gameRow = current.closest(".gameRow")
+                                            gameRow.appendChild(this.addBirdCard(this.cards))
+                                            this.remainDeck()
+                                        })
+
+                                        //se añade un empty a la fila
+                                        current.closest(".gameRow").appendChild(this.addEmptyCard())
+
+                                        //se elimina el primer clickable de la fila, se setean los posibles y el selected del jugador
+                                        current.closest(".clickable").remove()
+                                        let cleanPosibles = document.querySelectorAll(".posibles")
+                                        cleanPosibles.forEach((clickableSonRow) => {
+                                            clickableSonRow.classList.remove("posibles")
+                                        })
+
+                                        let selectedCard = document.querySelector(".selected")
+                                        selectedCard.classList.remove("selected")
+
+                                        //Se recogen los pájaros del jugador
+                                        let playerBirdsArr = []
+                                        playerBirds.forEach((el) => {
+                                            playerBirdsArr.push(el.getAttribute("name"))
+                                        })
+
+                                        //Se recogen los pájaros de la fila seleccionada
+                                        let selectedBirdsRowArr = []
+                                        selectedBirdsRow.forEach((el) => {
+                                            selectedBirdsRowArr.push(el.getAttribute("name"))
+                                        })
+
+                                        let newBirdToPlayer = []
+
+                                        selectedBirdsRowArr.forEach((rowBirdName) => {
+                                            if (playerBirdsArr.includes(rowBirdName)) {
+                                                //se actualizan las cartas iguales del jugador
+                                                let currentBirdSpan = parseInt(currentPlayer.querySelector(`.${rowBirdName} span`).innerText)
+
+                                                currentPlayer.querySelector(`.${rowBirdName} span`).innerText = currentBirdSpan + 1
+
+                                                currentPlayer.querySelector(`.${rowBirdName} span`).classList.add("badge")
+
+                                            } else {
+                                                //Si no existe se añade nuevo pájaro al jugador
+                                                selectedBirdsRowArr.forEach((el) => {
+                                                    if (!playerBirdsArr.includes(el)) {
+                                                        newBirdToPlayer.push(el)
+                                                    }
+                                                })
+                                            }
+                                        })
+
+                                        let newPlayerBirds = [...new Set(newBirdToPlayer)]
+
+                                        newPlayerBirds.forEach((el) => {
+                                            let birdCard = document.createElement("div")
+                                            birdCard.classList.add("col-2", el)
+                                            birdCard.classList.remove("selected")
+                                            birdCard.setAttribute("name", el)
+                                            birdCard.addEventListener("click",this)
+                                            this.birdMinMax(birdCard, el)
+
+                                            let badge = document.createElement("span")
+                                            badge.innerText = 1
+
+                                            birdCard.appendChild(badge)
+
+                                            currentPlayer.querySelector(".cards").appendChild(birdCard)
+                                        })
+
+                                        currentPlayer.querySelectorAll(".clickable").forEach((el) => el.remove())
+
+                                        for (let i = 0; i < 8 - currentPlayer.querySelectorAll(".cards [name]").length; i++) {
+                                            currentPlayer.querySelector(".cards").appendChild(this.addEmptyCard())
+                                        }
+
+                                        document.querySelectorAll("button").forEach((el) => {
+                                            el.disabled = false
+                                            el.classList.add("enabled")
+                                            el.classList.remove("disabled")
+                                        })
+
+                                        // playerBirds.forEach((el) => {
+                                        //   el.classList.add("disabled")
+                                        // })
+
+                                        //ELIMINAR el event listener
+                                    },
+                                    false
+                                )
+                            })
+                        })
+                    }
+                },
+                    false
+                )
             })
             playerBirds = currentPlayer.querySelectorAll("[name]")
             console.log(playerBirds)
         })
     }
-
 
     addBirdsToCollection() {
         let playerBlock = document.querySelector(".player-deck")

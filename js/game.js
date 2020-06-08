@@ -7,4 +7,5 @@ window.addEventListener("load", (event) => {
   board.addCardsRow()
   board.initCollectBirds()
   board.addBirdsToCollection()
+  board.finishRound()
 })

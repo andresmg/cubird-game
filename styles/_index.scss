@@ -232,7 +232,6 @@
     height: 4rem;
     background: url(../images/fly-01.svg) no-repeat right bottom / contain;
     animation: random-rigth 3s ease infinite;
-    z-index: 1;
   }
 
   .fly-02 {
@@ -243,7 +242,6 @@
     height: 4rem;
     background: url(../images/fly-02.svg) no-repeat right bottom / contain;
     animation: random-left 8s ease infinite;
-    z-index: 1;
   }
 
   .fly-03 {
@@ -254,7 +252,6 @@
     height: 4rem;
     background: url(../images/fly-03.svg) no-repeat right bottom / contain;
     animation: random-left 6s ease reverse infinite;
-    z-index: 1;
   }
 }
 
