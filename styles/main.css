@@ -236,6 +236,28 @@ body {
   }
 }
 
+@-webkit-keyframes fade-down {
+  0% {
+    opacity: 0;
+    top: -50%;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+@keyframes fade-down {
+  0% {
+    opacity: 0;
+    top: -50%;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -642,6 +664,10 @@ body {
   background: #6cb0b9 url(../images/player-bg.svg) no-repeat center bottom/contain;
 }
 
+body {
+  position: relative;
+}
+
 .owl {
   background: url(../images/card-owl.svg) no-repeat center center/cover;
 }
@@ -791,8 +817,6 @@ span {
 
 .players .end-round-btn,
 .players .update-collection-btn {
-  font-size: 1.4rem;
-  background: #459b45;
   color: #ffffff;
   padding: 1rem;
   border: 0;
@@ -807,7 +831,7 @@ span {
 
 .players .end-round-btn.disabled,
 .players .update-collection-btn.disabled {
-  opacity: 0.5;
+  opacity: 0;
 }
 
 .players .end-round-btn.enabled,
@@ -818,6 +842,16 @@ span {
 .players .end-round-btn.enabled:hover,
 .players .update-collection-btn.enabled:hover {
   background: #d4d754;
+}
+
+.players .end-round-btn {
+  font-size: 1.8rem;
+  background: #5659ba;
+}
+
+.players .update-collection-btn {
+  font-size: 1.2rem;
+  background: #459b45;
 }
 
 .players .no-yet {
@@ -845,6 +879,28 @@ span {
 .posibles {
   background: url(../images/posibles.svg) no-repeat center center/cover;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.posibles:before {
+  content: "";
+  background: url(../images/fly-01.svg) no-repeat center center/cover;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  -webkit-animation: random-rigth 2s ease infinite;
+          animation: random-rigth 2s ease infinite;
+}
+
+.posibles:after {
+  content: "";
+  background: url(../images/fly-03.svg) no-repeat center center/cover;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  -webkit-animation: random-left 2s ease infinite;
+          animation: random-left 2s ease infinite;
 }
 
 .carousel .carousel-inner {
@@ -866,5 +922,73 @@ span {
 .carousel .cards > [class*="col-"]:hover {
   border: 2px dotted #ffffff;
   cursor: auto;
+}
+
+.next-round {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../images/next-round-bg.svg) no-repeat center bottom/cover;
+  z-index: 5;
+  display: none;
+}
+
+.next-round.visible {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-animation: fade-down 200ms ease-out forwards;
+          animation: fade-down 200ms ease-out forwards;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.next-round.visible h1 {
+  color: #ffffff;
+  font-size: 4.4rem;
+}
+
+.next-round.visible .next-roundBtn {
+  background: #b48ccb;
+  font-size: 1.8rem;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  padding-right: 5rem;
+  border: 0;
+  outline: none;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  margin-top: 4rem;
+}
+
+.next-round.visible .next-roundBtn:after {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  background: url(../images/arrow.svg) no-repeat center center/contain;
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  margin-top: -1rem;
+}
+
+.next-round.visible .next-roundBtn:hover {
+  background: #d4d754;
 }
 /*# sourceMappingURL=main.css.map */

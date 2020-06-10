@@ -1,3 +1,7 @@
+body {
+  position: relative;
+}
+
 .owl {
   background: url(../images/card-owl.svg) no-repeat center center / cover;
 }
@@ -132,8 +136,6 @@ span {
 
   .end-round-btn,
   .update-collection-btn {
-    font-size: 1.4rem;
-    background: $main-green;
     color: $white;
     padding: 1rem;
     border: 0;
@@ -144,7 +146,7 @@ span {
     }
 
     &.disabled {
-      opacity: 0.5;
+      opacity: 0;
     }
 
     &.enabled {
@@ -154,6 +156,16 @@ span {
         background: $lime;
       }
     }
+  }
+
+  .end-round-btn {
+    font-size: 1.8rem;
+    background: $purple;
+  }
+
+  .update-collection-btn {
+    font-size: 1.2rem;
+    background: $main-green;
   }
 
   .no-yet {
@@ -182,6 +194,26 @@ span {
 .posibles {
   background: url(../images/posibles.svg) no-repeat center center / cover;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    background: url(../images/fly-01.svg) no-repeat center center / cover;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    animation: random-rigth 2s ease infinite;
+  }
+
+  &:after {
+    content: "";
+    background: url(../images/fly-03.svg) no-repeat center center / cover;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    animation: random-left 2s ease infinite;
+  }
 }
 
 .carousel {
@@ -207,5 +239,62 @@ span {
         cursor: auto;
       }
     }
+  }
+}
+
+.next-round {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../images/next-round-bg.svg) no-repeat center bottom / cover;
+  z-index: 5;
+  display: none;
+
+  &.visible {
+    display: flex;
+    animation: fade-down 200ms ease-out forwards;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+      color: $white;
+      font-size: 4.4rem;
+    }
+    
+    .next-roundBtn {
+      background: $light-purple;
+      font-size: 1.8rem;
+      color: $white;
+      padding: 1rem 2rem;
+      padding-right: 5rem;
+      border: 0;
+      outline: none;
+      position: relative;
+      display: flex;
+      justify-content: start;
+      margin-top: 4rem;
+
+      &:after {
+        content: "";
+        width: 2rem;
+        height: 2rem;
+        background: url(../images/arrow.svg) no-repeat center center / contain;
+        position: absolute;
+        right: 2rem;
+        top: 50%;
+        margin-top: -1rem;
+      }
+
+      &:hover {
+        background: $lime;
+      }
+
+
+    }
+
   }
 }

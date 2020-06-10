@@ -140,15 +140,13 @@
 	.st134{stroke:#000000;stroke-miterlimit:10;}
 	.st135{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
 	.st136{stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-	.st137{opacity:0.5;}
-	.st138{fill:url(#SVGID_19_);}
-	.st139{fill:url(#SVGID_20_);}
-	.st140{opacity:0.45;}
+	.st137{fill:url(#SVGID_19_);}
+	.st138{fill:url(#SVGID_20_);}
 </style>
 <g id="IMG_x5F_1254_xA0_Image_1_">
 </g>
 <g id="Layer_2">
-	<g class="st137">
+	<g>
 		<g>
 			<radialGradient id="SVGID_1_" cx="282.5484" cy="391.2694" r="341.3443" gradientUnits="userSpaceOnUse">
 				<stop  offset="0" style="stop-color:#99C1DA"/>
@@ -162,28 +160,6 @@
 				<stop  offset="1" style="stop-color:#D4D754"/>
 			</linearGradient>
 			<rect y="421" class="st2" width="565.1" height="361.7"/>
-		</g>
-		<g>
-			<polygon class="st68" points="476,134.4 468.5,133.3 450.3,144 456.7,145.9 			"/>
-			<polyline class="st38" points="456.7,145.9 467.9,128.5 460.3,127.4 450.3,144 			"/>
-			<g>
-				<polygon class="st39" points="455.8,145.6 455.8,145.6 456.1,146.2 456.1,146.2 456.4,146.8 449.6,147.8 449.3,147.2 449,146.5 
-					448.7,145.9 455.5,145 				"/>
-				<polygon class="st40" points="455.5,145 455.9,143.2 449.1,144.1 448.7,145.9 				"/>
-				<g>
-					<polygon class="st41" points="455.9,143.2 456.2,143.8 456.2,144 456.2,143.8 456.5,144.4 456.1,146.2 455.8,145.6 
-						455.8,145.6 455.5,145 					"/>
-					<polygon class="st41" points="456.5,144.4 456.8,145 456.5,146.8 456.1,146.2 					"/>
-				</g>
-			</g>
-			<g>
-				<polyline class="st42" points="455.7,144.1 434,130.5 425.6,130.1 448.8,145.1 				"/>
-				<polygon class="st43" points="434.1,130.1 434,130.5 425.6,130.1 425.7,129.7 				"/>
-				<polyline class="st44" points="455.7,144.1 434.1,130.1 434,130.5 455.7,144.1 				"/>
-				<polygon class="st42" points="433.2,137.8 424.8,137.4 448.8,145.1 455.7,144.1 				"/>
-				<polygon class="st43" points="433.4,137.4 433.2,137.8 424.8,137.4 424.9,137 				"/>
-				<polygon class="st44" points="433.2,137.8 455.7,144.1 433.4,137.4 				"/>
-			</g>
 		</g>
 		<g>
 			<polygon class="st3" points="462.6,469.9 444.7,476.6 410.2,456.2 			"/>
@@ -238,18 +214,6 @@
 		</g>
 		<path class="st14" d="M50.8,421.7c0,0-2.2-30.4,30.4-29.3c0,0,4.4-31.5,31.5-31.5s34.1,13.7,38.6,26.7c0,0,25.9-10,41.1,5.6
 			c15.2,15.6,12.2,28.5,12.2,28.5H50.8z"/>
-	</g>
-	<g class="st140">
-		<polygon class="st35" points="98.2,200.9 122.3,225 114.8,235.6 89.2,210.6 		"/>
-		<polygon class="st36" points="107.1,230.6 107.1,230.6 105.9,231.3 105.9,231.3 104.7,232 115.6,241.4 116.8,240.7 118,240 
-			119.2,239.3 108.3,229.9 		"/>
-		<polygon class="st26" points="108.3,229.9 109.7,226.2 120.6,235.6 119.2,239.3 		"/>
-		<polygon class="st37" points="114.8,209.2 142.8,199.1 142.8,224.5 114.8,235.6 		"/>
-		<g>
-			<polygon class="st33" points="109.7,226.2 108.5,226.9 108.4,227.4 108.5,226.9 107.3,227.6 105.9,231.3 107.1,230.6 
-				107.1,230.6 108.3,229.9 			"/>
-			<polygon class="st33" points="107.3,227.6 106.1,228.3 104.7,232 105.9,231.3 			"/>
-		</g>
 	</g>
 </g>
 </svg>
