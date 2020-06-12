@@ -7,15 +7,15 @@ Web adaptation for Cubirds card game, developed using HTML, CSS, Javascript & Bo
 The winner will be the first player to meet one of these two conditions:
 
 Have 7 different flocks:
-
+<p align="center">
 <img src="https://github.com/andresmg/cubird-game/blob/master/images/siete-especies.svg" width="500">
-
+</p>
 
 
 Have 2 different flocks, with 3 birds in each one:
-<center>
+<p align="center">
 <img src="https://github.com/andresmg/cubird-game/blob/master/images/dos-especies.svg" width="250">
-</center>
+</p>
 
 
 ##Copyright
