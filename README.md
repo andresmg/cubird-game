@@ -13,9 +13,9 @@ Have 7 different flocks:
 
 
 Have 2 different flocks, with 3 birds in each one:
-
+<center>
 <img src="https://github.com/andresmg/cubird-game/blob/master/images/dos-especies.svg" width="250">
-
+</center>
 
 
 ##Copyright
