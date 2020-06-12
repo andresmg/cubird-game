@@ -1,4 +1,6 @@
-# Cubirds
+<p align="center">
+<img src="https://github.com/andresmg/cubird-game/blob/master/images/logo.svg" width="250">
+</p>
 
 Web adaptation for Cubirds card game, developed using HTML, CSS, Javascript & Bootstrap.
 
