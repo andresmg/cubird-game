@@ -66,6 +66,10 @@ body {
     [class*="col-"] {
       border: 2px dotted $main-blue;
       background-color: rgba($white, 0.4);
+
+      &.appear {
+        animation: appear 200ms linear forwards;
+      }
     }
   }
 }
@@ -140,6 +144,7 @@ span {
     padding: 1rem;
     border: 0;
     outline: none;
+    transition: all 200ms ease-in-out;
 
     &:active, &:focus {
       outline: none;
@@ -168,8 +173,41 @@ span {
     background: $main-green;
   }
 
-  .no-yet {
-    padding-top: 1rem;
+  .player-deck {
+    position: relative;
+
+    .no-yet {
+      padding-top: 1rem;
+      background-color: rgba(133, 211, 238, 0.85);
+      padding-top: 1rem;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center;
+      font-size: 3rem;
+      text-align: center;
+
+      &:before {
+        content: "";
+        width: 3rem;
+        height: 3rem;
+        position: absolute;
+        top: 12.7rem;
+        left: 0.4rem;
+        background: url(../images/bird.svg) no-repeat center center / contain;
+      }
+    }
+
+    [name] {
+      transition: all 300ms ease-in-out;
+  
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
   }
 
   .hide {
@@ -296,5 +334,114 @@ span {
 
     }
 
+  }
+
+  &.curtain-up {
+    animation: fade 200ms ease-out forwards;
+  }
+}
+
+.help {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  border: 0.2rem solid $main-green;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 4rem;
+  bottom: 4rem;
+  color: $main-green !important;
+  font-size: 1.6rem;
+}
+
+.modal-help {
+  background: rgba($purple, 0.8) url(../images/how-to.svg) no-repeat center center / cover;
+}
+
+.newgame-btn {
+  text-align: center;
+  text-decoration: none;
+  color: $white;
+  font-size: 2.4rem;
+  padding: 1rem 4rem;
+  border: 0.1rem solid $white;
+  transition: all 200ms ease-in-out;
+  margin-top: 4rem;
+
+  &:hover {
+    text-decoration: none;
+    color: $light-blue;
+    border-color: $light-blue;
+  }
+}
+
+.winner {
+  display: none;
+  
+  &.visible {
+    display: block;
+    animation: fade-down 200ms ease-out forwards;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+
+    .grad-bg {
+      background: #5659ba url(../images/moon-stars.svg) no-repeat center top / contain;
+    }
+
+    .main-content {
+      height: 100vh;
+      border-radius: 0;
+    }
+
+    .dark-grass {
+      position: fixed;
+      bottom: 0;
+      background: url(../images/dark-grass.svg) repeat-x left bottom;
+      height: 20rem;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .flamingo, .parrot {
+      bottom: 0;
+    }
+
+    .logo {
+      img {
+        width: 20rem;
+        margin-top: 5rem;
+        left: 4rem;
+        margin-bottom: 6rem;
+      }
+    }
+  
+    h4, h1 {
+      color: $white;
+    }
+
+    h1 {
+      font-size: 8rem;
+      text-shadow: -0.8rem 0.5rem rgba(0,0,0,1);
+    }
+
+    h4 {
+      margin-bottom: 3rem;
+      font-size: 4rem;
+      animation: blink 200ms linear infinite;
+    }
+
+    .jump {
+      animation: jump 250ms ease-in-out infinite;
+    }
+
+    .jump2 {
+      animation: jump2 250ms ease-in-out reverse infinite;
+    }
   }
 }

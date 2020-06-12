@@ -4,12 +4,12 @@ class Board {
         this.playersNames = []
     }
 
-    remainDeck() {
+    _remainDeck() {
         const deck = document.querySelector(".deck .badge")
         deck.innerText = this.cards.length
     }
 
-    addEmptyCard() {
+    _addEmptyCard() {
         const emptyCard = document.createElement("div")
         emptyCard.classList.add("col-2", "clickable")
 
@@ -21,7 +21,7 @@ class Board {
         return emptyCard
     }
 
-    addBirdCard(arr) {
+    _addBirdCard(arr) {
         const birdCard = document.createElement("div")
         birdCard.classList.add("col-2", arr[0].name)
         birdCard.setAttribute("name", arr[0].name)
@@ -37,7 +37,7 @@ class Board {
         return birdCard
     }
 
-    updatePlayerCards(arr, parentElement) {
+    _updatePlayerCards(arr, parentElement) {
         const birdObj = arr.reduce((acc, name) => {
             acc[name] = (acc[name] || 0) + 1
             return acc
@@ -48,7 +48,7 @@ class Board {
             birdCard.classList.add("col-2", key)
             birdCard.setAttribute("name", key)
 
-            this.birdMinMax(birdCard, key)
+            this._birdMinMax(birdCard, key)
 
             const badge = document.createElement("span")
             badge.innerText = 1
@@ -65,7 +65,7 @@ class Board {
         const objLength = Object.keys(birdObj).length
         if (!(objLength === 8)) {
             for (let i = 0; i < 8 - objLength; i++) {
-                parentElement.appendChild(this.addEmptyCard())
+                parentElement.appendChild(this._addEmptyCard())
             }
         }
     }
@@ -76,7 +76,7 @@ class Board {
         this.playersNames.push(url.searchParams.get("player2"))
     }
 
-    birdMinMax(birdCard, el) {
+    _birdMinMax(birdCard, el) {
         switch (el) {
             case "bird":
                 birdCard.setAttribute("data-min", "6")
@@ -157,7 +157,7 @@ class Board {
                 this.cards.shift()
             }
 
-            this.updatePlayerCards(birdsArr, rowCards)
+            this._updatePlayerCards(birdsArr, rowCards)
 
             const newDiv = document.createElement("div")
             newDiv.classList.add("col", "justify-content-end", "d-flex")
@@ -166,7 +166,7 @@ class Board {
             updateCollectionBtn.classList.add("update-collection-btn")
             updateCollectionBtn.setAttribute("type", "button")
             updateCollectionBtn.setAttribute("data-target", `player${i - 1}`)
-            updateCollectionBtn.innerText = "Add MOB!"
+            updateCollectionBtn.innerText = "Add to my flocks!"
 
             document.querySelectorAll("button").forEach((el) => {
                 el.disabled = true
@@ -177,7 +177,7 @@ class Board {
 
             playerBlock.appendChild(newDiv)
 
-            this.remainDeck()
+            this._remainDeck()
         })
     }
 
@@ -190,10 +190,10 @@ class Board {
 
             const player = document.createElement("h4")
             if (el) {
-                player.innerText = `${el}'s collection`
+                player.innerText = `${el}'s flocks`
                 i++
             } else {
-                player.innerText = `Player ${i}'s collection`
+                player.innerText = `Player ${i}'s flocks`
                 i++
             }
 
@@ -204,10 +204,10 @@ class Board {
             rowCards.classList.add("row", "cards")
 
             carouselItem.appendChild(rowCards)
-            rowCards.appendChild(this.addBirdCard(this.cards))
+            rowCards.appendChild(this._addBirdCard(this.cards))
 
             for (let i = 0; i < 7; i++) {
-                rowCards.appendChild(this.addEmptyCard())
+                rowCards.appendChild(this._addEmptyCard())
             }
         })
 
@@ -252,7 +252,7 @@ class Board {
                 const birdCard = document.createElement("div")
                 birdCard.classList.add("col-2", uniqueArr[i])
                 birdCard.setAttribute("name", uniqueArr[i])
-                this.birdMinMax(birdCard, uniqueArr[i])
+                this._birdMinMax(birdCard, uniqueArr[i])
 
                 const badge = document.createElement("span")
                 badge.className = "badge"
@@ -262,10 +262,10 @@ class Board {
             }
 
             boardContent.appendChild(gameRow)
-            gameRow.appendChild(this.addEmptyCard())
+            gameRow.appendChild(this._addEmptyCard())
         }
 
-        this.remainDeck()
+        this._remainDeck()
     }
 
     initCollectBirds() {
@@ -278,13 +278,13 @@ class Board {
 
             //SE AÑADE UN EVENTO CLICK EN LA CARTA SELECCIONADA POR EL JUGADOR
             playerBirds.forEach((currentPlayerCard) => {
-                currentPlayerCard.addEventListener("click", (event) => this.getPosibleBirds(selectedBird), false)
+                currentPlayerCard.addEventListener("click", (event) => this._getPosibleBirds(selectedBird), false)
             })
         })
 
     }
 
-    getPosibleBirds(selectedBird) {
+    _getPosibleBirds(selectedBird) {
         selectedBird = event.target
 
         const getCurrentPlayerId = selectedBird.closest(".player-block").getAttribute("id")
@@ -306,20 +306,19 @@ class Board {
         }
 
         if (posibles) {
-            console.log(posibles)
             posibles.forEach((currentPosible) => {
                 let posiblesParents = currentPosible.closest(".gameRow")
                 let clickableSons = posiblesParents.querySelector(".clickable")
                 clickableSons.classList.add("posibles")
 
                 let posibleBirds
-                clickableSons.addEventListener("click", (event) => this.collectBirdsAndUpdate(posibleBirds, getCurrentPlayerId, selectedBird), false)
+                clickableSons.addEventListener("click", (event) => this._collectBirdsAndUpdate(posibleBirds, getCurrentPlayerId, selectedBird), false)
 
             })
         }
     }
 
-    collectBirdsAndUpdate(posibleBirds, getCurrentPlayerId, selectedBird) {
+    _collectBirdsAndUpdate(posibleBirds, getCurrentPlayerId, selectedBird) {
         posibleBirds = event.target
 
         const birdsToStealRow = posibleBirds.closest(".gameRow")
@@ -329,12 +328,13 @@ class Board {
         birdsToStealRow.querySelectorAll("[name]").forEach(bird => {
             stealedBirds.push(bird.getAttribute("name"))
         })
+        console.log(stealedBirds)
 
         //Se agregan nuevas celdas vacías a cada fila donde hubo posibilidad de robar
         document.querySelectorAll(".posibles").forEach(el => {
             const newEmptyCard = el.closest(".gameRow")
             el.remove()
-            newEmptyCard.appendChild(this.addEmptyCard())
+            newEmptyCard.appendChild(this._addEmptyCard())
         })
 
         //Se eliminan los pájaros de la fila seleccionada
@@ -342,12 +342,17 @@ class Board {
 
         //Se agregan tres cartas a la fila vacía
         for (let i = 0; i < 3; i++) {
-            birdsToStealRow.appendChild(this.addBirdCard(this.cards))
-            this.remainDeck()
+            birdsToStealRow.appendChild(this._addBirdCard(this.cards))
+            birdsToStealRow.querySelectorAll("[name]").forEach(el => {
+                el.style.opacity = 0
+                setTimeout(() => {el.classList.add("appear")}, 50 * i)
+            })
         }
 
+        this._remainDeck()
+
         //Se agrega celda vacía a la fila
-        birdsToStealRow.appendChild(this.addEmptyCard())
+        birdsToStealRow.appendChild(this._addEmptyCard())
 
         //Se cogen las cartas del jugador
         let cardsInPlayerDeck = []
@@ -360,7 +365,7 @@ class Board {
         //Se actualiza el deck del jugador
         let uniqueArr = cardsInPlayerDeck.concat(stealedBirds)
         document.getElementById(getCurrentPlayerId).querySelector(".cards").innerHTML = ""
-        const birdObj = this.updatePlayerCards(uniqueArr, document.getElementById(getCurrentPlayerId).querySelector(".cards"))
+        const birdObj = this._updatePlayerCards(uniqueArr, document.getElementById(getCurrentPlayerId).querySelector(".cards"))
 
         //Se activan los botones 
         document.querySelectorAll("button").forEach((el) => {
@@ -372,7 +377,7 @@ class Board {
         //Se agrega evento al botón next round
         const nextRoundBtn = document.querySelector(".end-round-btn")
         let nextRound
-        nextRoundBtn.addEventListener("click", (event) => this.finishRound(nextRound, getCurrentPlayerId), false)
+        nextRoundBtn.addEventListener("click", (event) => this._finishRound(nextRound, getCurrentPlayerId), false)
     }
 
     addBirdsToCollection() {
@@ -401,7 +406,13 @@ class Board {
                     const name = el.getAttribute("name")
                     const max = el.getAttribute("data-max")
                     const min = el.getAttribute("data-min")
-                    const span = parseInt(el.querySelector("span").innerText)
+                    let span = el.querySelector("span").innerText
+
+                    if (span === "") {
+                        span = 1
+                    } else {
+                        span = parseInt(span)
+                    }
 
                     if (span >= max) {
                         push = true
@@ -410,20 +421,20 @@ class Board {
                         for (let i = 0; i < span - 1; i++) {
                             this.cards.push({name: name, min: parseInt(min), max: parseInt(max)})
                             shuffleCards(this.cards)
-                            this.remainDeck()
+                            this._remainDeck()
                         }
                         currentPlayer.querySelector(`.cards [name = ${name}]`).remove()
-                        currentPlayer.querySelector(".cards").appendChild(this.addEmptyCard())
+                        currentPlayer.querySelector(".cards").appendChild(this._addEmptyCard())
                     } else if (span >= min && span < max) {
                         push = true
                         playerBirdArr.push(name)
                         for (let i = 0; i < span - 1; i++) {
                             this.cards.push({name: name, min: parseInt(min), max: parseInt(max)})
                             shuffleCards(this.cards)
-                            this.remainDeck()
+                            this._remainDeck()
                         }
                         currentPlayer.querySelector(`.cards [name = ${name}]`).remove()
-                        currentPlayer.querySelector(".cards").appendChild(this.addEmptyCard())
+                        currentPlayer.querySelector(".cards").appendChild(this._addEmptyCard())
                     }
                 })
 
@@ -431,7 +442,7 @@ class Board {
                 if (!push) {
                     const message = document.createElement("div")
                     message.classList.add("col", "justify-content-end", "d-flex", "no-yet")
-                    message.innerText = "WAIT! you can't add to collection yet!"
+                    message.innerText = "WAIT! you don't have enough birds to add!"
                     currentPlayer.appendChild(message)
                 } else {
                     let currentPlayerCollection = document.querySelectorAll(`.carousel-item.${currentId} .cards [name]`)
@@ -440,21 +451,29 @@ class Board {
 
                     let currentPlayerCollectionArr = []
                     currentPlayerCollection.forEach((el) => {
-                        currentPlayerCollectionArr.push(el.getAttribute("name"))
+                        let elName = el.getAttribute("name")
+                        let elNum = parseInt(el.querySelector("span").innerText)
+                        if (elNum > 1) {
+                            for (let i = 0; i < elNum; i++) {
+                                currentPlayerCollectionArr.push(elName)
+                            }
+                        } else {
+                            currentPlayerCollectionArr.push(elName)
+                        }
                     })
 
+                    console.log(currentPlayerCollectionArr)
                     let uniqueArr = playerBirdArr.concat(currentPlayerCollectionArr)
-                    const birdObj = this.updatePlayerCards(uniqueArr, currentCollection)
+                    const birdObj = this._updatePlayerCards(uniqueArr, currentCollection)
                 }
 
-                this.andTheWinnerIs(currentPlayer)
-
+                setTimeout(() => {this._andTheWinnerIs(currentPlayer)}, 200)
             })
         })
 
     }
 
-    nextRoundCurtain(getCurrentPlayerId) {
+    _nextRoundCurtain(getCurrentPlayerId) {
         const nextRound = document.querySelector(".next-round")
         nextRound.classList.add("visible")
 
@@ -470,44 +489,86 @@ class Board {
 
         const nextBtn = document.querySelector(".next-roundBtn")
         nextBtn.addEventListener("click", (event) => {
-            nextRound.classList.remove("visible")
+            if (getCurrentPlayerId === "player2") {
+                document.querySelector(".carousel-item.player1").classList.add("active")
+                document.querySelector(".carousel-item.player2").classList.remove("active")
+                document.querySelector(".player-block.player2").classList.add("hide")
+                document.querySelector(".player-block.player1").classList.remove("hide")
+            } else {
+                document.querySelector(".carousel-item.player1").classList.remove("active")
+                document.querySelector(".carousel-item.player2").classList.add("active")
+                document.querySelector(".player-block.player1").classList.add("hide")
+                document.querySelector(".player-block.player2").classList.remove("hide")
+            }
+
+            //Se quita la cortina "next player turn"
+            nextRound.classList.add("curtain-up")
+            setTimeout(() => {nextRound.classList.remove("visible", "curtain-up")}, 200)
+
+
+            //Si hay mensaje de "WAIT" se borra
+            const message = document.querySelector(`#${getCurrentPlayerId} .no-yet`)
+            if (message) {
+                message.remove()
+            }
+
         }, false)
     }
 
-    finishRound(nextRound, getCurrentPlayerId) {
-        //Se añade otra vez el evenlistener a las cartas nuevas
+    _finishRound(nextRound, getCurrentPlayerId) {
         nextRound = event.target
-        console.log(getCurrentPlayerId)
-
+        //Se añade otra vez el evenlistener a las cartas nuevas
         document.getElementById(getCurrentPlayerId).querySelectorAll(".cards [name]").forEach(el => {
-            el.addEventListener("click", (event) => this.getPosibleBirds(), false)
+            el.addEventListener("click", (event) => this._getPosibleBirds(), false)
         })
 
-        console.log("NEXT ROUND!")
         document.querySelectorAll(`[class*="-btn"]`).forEach((el) => {
             el.disabled = true
             el.classList.add("disabled")
             el.classList.remove("enabled")
         })
 
-        if (getCurrentPlayerId === "player2") {
-            this.nextRoundCurtain(getCurrentPlayerId)
-            document.querySelector(".carousel-item.player1").classList.add("active")
-            document.querySelector(".carousel-item.player2").classList.remove("active")
-            document.querySelector(".player-block.player1").classList.remove("hide")
-            document.querySelector(".player-block.player2").classList.add("hide")
-        } else {
-            this.nextRoundCurtain(getCurrentPlayerId)
-            document.querySelector(".carousel-item.player1").classList.remove("active")
-            document.querySelector(".carousel-item.player2").classList.add("active")
-            document.querySelector(".player-block.player1").classList.add("hide")
-            document.querySelector(".player-block.player2").classList.remove("hide")
-        }
-
+        this._nextRoundCurtain(getCurrentPlayerId)
     }
 
-    andTheWinnerIs(currentPlayer) {
+    _andTheWinnerIs(currentPlayer) {
         console.log("chequeo and the winner is")
 
+        let birdsInBand = 0
+        let namesInBand = 0
+
+        //Selecciono los pájaros de la colección del jugador y obtengo su nombre y su número
+        const playerCollection = document.querySelectorAll(`.carousel-inner .${currentPlayer.getAttribute("id")} .cards [name]`)
+        playerCollection.forEach(el => {
+            let elName = el.getAttribute("name")
+            let elNum = parseInt(el.querySelector("span").innerText)
+
+            if (elNum >= 3) {
+                birdsInBand++
+            } else if (elName) {
+                namesInBand++
+            }
+        })
+
+        if (birdsInBand >= 2 || namesInBand >= 2) {
+            const winner = document.querySelector(".winner")
+            winner.classList.add("visible")
+
+            const winnerName = winner.querySelector("h1")
+            if (currentPlayer.getAttribute("id") === "player1") {
+                if (this.playersNames[0] !== "") {
+                    winnerName.innerText = this.playersNames[0]
+                } else {
+                    winnerName.innerText = currentPlayer.getAttribute("id")
+                }
+            } else if (currentPlayer.getAttribute("id") === "player2") {
+                if (this.playersNames[1] !== "") {
+                    winnerName.innerText = this.playersNames[1]
+                } else {
+                    winnerName.innerText = currentPlayer.getAttribute("id")
+                }
+            }
+
+        }
     }
 }

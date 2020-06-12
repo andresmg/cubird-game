@@ -258,6 +258,102 @@ body {
   }
 }
 
+@-webkit-keyframes fade {
+  0% {
+    opacity: 1;
+    top: 0;
+  }
+  100% {
+    opacity: 0;
+    top: -50%;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+    top: 0;
+  }
+  100% {
+    opacity: 0;
+    top: -50%;
+  }
+}
+
+@-webkit-keyframes appear {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@-webkit-keyframes jump {
+  100% {
+    bottom: 32%;
+  }
+}
+
+@keyframes jump {
+  100% {
+    bottom: 32%;
+  }
+}
+
+@-webkit-keyframes jump2 {
+  100% {
+    bottom: 2%;
+  }
+}
+
+@keyframes jump2 {
+  100% {
+    bottom: 2%;
+  }
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -478,7 +574,7 @@ body {
 }
 
 .allBirds .cloud-01 {
-  position: absolute;
+  position: fixed;
   top: 30%;
   left: 15%;
   width: 15rem;
@@ -489,7 +585,7 @@ body {
 }
 
 .allBirds .cloud-02 {
-  position: absolute;
+  position: fixed;
   top: 20%;
   right: 15%;
   width: 15rem;
@@ -744,6 +840,11 @@ body {
   background-color: rgba(255, 255, 255, 0.4);
 }
 
+.board-content > .gameRow [class*="col-"].appear {
+  -webkit-animation: appear 200ms linear forwards;
+          animation: appear 200ms linear forwards;
+}
+
 .cards {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -821,6 +922,8 @@ span {
   padding: 1rem;
   border: 0;
   outline: none;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
 .players .end-round-btn:active, .players .end-round-btn:focus,
@@ -854,8 +957,49 @@ span {
   background: #459b45;
 }
 
-.players .no-yet {
+.players .player-deck {
+  position: relative;
+}
+
+.players .player-deck .no-yet {
   padding-top: 1rem;
+  background-color: rgba(133, 211, 238, 0.85);
+  padding-top: 1rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.players .player-deck .no-yet:before {
+  content: "";
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 12.7rem;
+  left: 0.4rem;
+  background: url(../images/bird.svg) no-repeat center center/contain;
+}
+
+.players .player-deck [name] {
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+.players .player-deck [name]:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .players .hide {
@@ -990,5 +1134,123 @@ span {
 
 .next-round.visible .next-roundBtn:hover {
   background: #d4d754;
+}
+
+.next-round.curtain-up {
+  -webkit-animation: fade 200ms ease-out forwards;
+          animation: fade 200ms ease-out forwards;
+}
+
+.help {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  border: 0.2rem solid #459b45;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  right: 4rem;
+  bottom: 4rem;
+  color: #459b45 !important;
+  font-size: 1.6rem;
+}
+
+.modal-help {
+  background: rgba(86, 89, 186, 0.8) url(../images/how-to.svg) no-repeat center center/cover;
+}
+
+.newgame-btn {
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 2.4rem;
+  padding: 1rem 4rem;
+  border: 0.1rem solid #ffffff;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  margin-top: 4rem;
+}
+
+.newgame-btn:hover {
+  text-decoration: none;
+  color: #86d2ee;
+  border-color: #86d2ee;
+}
+
+.winner {
+  display: none;
+}
+
+.winner.visible {
+  display: block;
+  -webkit-animation: fade-down 200ms ease-out forwards;
+          animation: fade-down 200ms ease-out forwards;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.winner.visible .grad-bg {
+  background: #5659ba url(../images/moon-stars.svg) no-repeat center top/contain;
+}
+
+.winner.visible .main-content {
+  height: 100vh;
+  border-radius: 0;
+}
+
+.winner.visible .dark-grass {
+  position: fixed;
+  bottom: 0;
+  background: url(../images/dark-grass.svg) repeat-x left bottom;
+  height: 20rem;
+  width: 100%;
+  z-index: 10;
+}
+
+.winner.visible .flamingo, .winner.visible .parrot {
+  bottom: 0;
+}
+
+.winner.visible .logo img {
+  width: 20rem;
+  margin-top: 5rem;
+  left: 4rem;
+  margin-bottom: 6rem;
+}
+
+.winner.visible h4, .winner.visible h1 {
+  color: #ffffff;
+}
+
+.winner.visible h1 {
+  font-size: 8rem;
+  text-shadow: -0.8rem 0.5rem black;
+}
+
+.winner.visible h4 {
+  margin-bottom: 3rem;
+  font-size: 4rem;
+  -webkit-animation: blink 200ms linear infinite;
+          animation: blink 200ms linear infinite;
+}
+
+.winner.visible .jump {
+  -webkit-animation: jump 250ms ease-in-out infinite;
+          animation: jump 250ms ease-in-out infinite;
+}
+
+.winner.visible .jump2 {
+  animation: jump2 250ms ease-in-out reverse infinite;
 }
 /*# sourceMappingURL=main.css.map */
