@@ -798,6 +798,17 @@ body {
   .allBirds .owl {
     bottom: 24%;
   }
+  .allBirds .trees {
+    bottom: 43.7%;
+    width: 9rem;
+  }
+  .allBirds .house-cow {
+    width: 30rem;
+  }
+  .allBirds .cloud-03 {
+    bottom: 48%;
+    width: 10rem;
+  }
 }
 
 body {
