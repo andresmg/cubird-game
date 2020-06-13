@@ -768,6 +768,9 @@ body {
 }
 
 @media (max-width: 1024px) {
+  .main-content {
+    height: calc(100vh - 10rem);
+  }
   #index .logo img {
     margin-top: 5rem;
   }
