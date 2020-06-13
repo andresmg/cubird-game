@@ -393,6 +393,10 @@ body {
           align-items: center;
 }
 
+.main-content {
+  border: 0.2rem solid #ffffff;
+}
+
 .grad-bg {
   background: #b7d856;
   background: -webkit-gradient(linear, left bottom, left top, from(#b7d856), color-stop(45%, #d4d754), color-stop(45%, #52c6f0), color-stop(60%, #52c6f0), to(#99c1da));
@@ -850,6 +854,10 @@ body {
   height: 20.5rem;
 }
 
+.game-content {
+  border: 0.2rem solid #ffffff;
+}
+
 .board-content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1195,7 +1203,7 @@ span {
   right: 4rem;
   bottom: 4rem;
   color: #ffffff !important;
-  background-color: #b8d855;
+  background-color: transparent;
   font-size: 1.6rem;
 }
 
@@ -1298,11 +1306,26 @@ span {
 }
 
 @media (max-width: 1024px) {
+  .game-content {
+    height: calc(100vh - 10rem);
+  }
   .players {
     padding: 2rem 1rem 1rem 2rem;
   }
-  .game-content {
-    height: calc(100vh - 10rem);
+  .players h1 {
+    margin-bottom: 1rem;
+  }
+  .players .logo-min {
+    margin-bottom: 1.5rem;
+  }
+  .players .end-round-btn {
+    font-size: 1.2rem;
+  }
+  .players .update-collection-btn {
+    font-size: 1rem;
+  }
+  .board {
+    padding: 2rem 3rem;
   }
   .no-yet {
     font-size: 2rem !important;
@@ -1324,6 +1347,11 @@ span {
   }
   .help {
     bottom: -1.5rem;
+    background-color: #b7d855;
+  }
+  .carousel-inner h4 {
+    margin: 0;
+    margin-bottom: 0 !important;
   }
   .carousel-control-next,
   .carousel-control-prev {

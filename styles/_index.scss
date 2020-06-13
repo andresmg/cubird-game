@@ -5,6 +5,10 @@
   align-items: center;
 }
 
+.main-content {
+  border: 0.2rem solid $white;
+}
+
 .grad-bg {
   background: rgb(183, 216, 86);
   background: linear-gradient(
