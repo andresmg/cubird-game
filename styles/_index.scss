@@ -44,10 +44,13 @@
   width: 24rem;
   background: $main-green;
   margin: 3rem auto 2rem auto;
+  text-align: center;
 
   &:hover,
   &:active {
     background: $lime;
+    text-decoration: none;
+    color: $white;
   }
 
   &:focus {

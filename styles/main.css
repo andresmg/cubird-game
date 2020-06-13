@@ -428,12 +428,15 @@ body {
   width: 24rem;
   background: #459b45;
   margin: 3rem auto 2rem auto;
+  text-align: center;
 }
 
 .start-btn:hover, .start-btn:active,
 .start-btn:visited:hover,
 .start-btn:visited:active {
   background: #d4d754;
+  text-decoration: none;
+  color: #ffffff;
 }
 
 .start-btn:focus,
