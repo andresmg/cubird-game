@@ -760,6 +760,42 @@ body {
   background: #6cb0b9 url(../images/player-bg.svg) no-repeat center bottom/contain;
 }
 
+@media (max-width: 1024px) {
+  #index .logo img {
+    margin-top: 5rem;
+  }
+  .copyright [class*="col"] {
+    font-size: 0.8rem;
+  }
+  .allBirds .grass {
+    bottom: 5rem;
+  }
+  .allBirds .flock {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+  .allBirds .parrot,
+  .allBirds .flamingo {
+    bottom: -5rem;
+  }
+  .allBirds .duck {
+    bottom: 26%;
+  }
+  .allBirds .large {
+    bottom: 22%;
+  }
+  .allBirds .bird,
+  .allBirds .mockingbird {
+    bottom: 28%;
+  }
+  .allBirds .tucan {
+    bottom: 19%;
+  }
+  .allBirds .owl {
+    bottom: 24%;
+  }
+}
+
 body {
   position: relative;
 }
@@ -1218,7 +1254,8 @@ span {
   z-index: 10;
 }
 
-.winner.visible .flamingo, .winner.visible .parrot {
+.winner.visible .flamingo,
+.winner.visible .parrot {
   bottom: 0;
 }
 
@@ -1229,7 +1266,8 @@ span {
   margin-bottom: 6rem;
 }
 
-.winner.visible h4, .winner.visible h1 {
+.winner.visible h4,
+.winner.visible h1 {
   color: #ffffff;
 }
 
@@ -1252,5 +1290,28 @@ span {
 
 .winner.visible .jump2 {
   animation: jump2 250ms ease-in-out reverse infinite;
+}
+
+@media (max-width: 1024px) {
+  .game-content {
+    height: calc(100vh - 6.5rem);
+  }
+  .no-yet {
+    font-size: 2rem !important;
+  }
+  .no-yet:before {
+    top: 8.7rem !important;
+  }
+  .deck {
+    display: none;
+  }
+  .cards > [class*="col-"] {
+    margin: 1rem;
+  }
+  .badge {
+    min-width: 2rem;
+    height: 2rem;
+    font-size: 1.2rem;
+  }
 }
 /*# sourceMappingURL=main.css.map */

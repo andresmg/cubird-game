@@ -146,7 +146,8 @@ span {
     outline: none;
     transition: all 200ms ease-in-out;
 
-    &:active, &:focus {
+    &:active,
+    &:focus {
       outline: none;
     }
 
@@ -203,7 +204,7 @@ span {
 
     [name] {
       transition: all 300ms ease-in-out;
-  
+
       &:hover {
         transform: scale(1.1);
       }
@@ -302,7 +303,7 @@ span {
       color: $white;
       font-size: 4.4rem;
     }
-    
+
     .next-roundBtn {
       background: $light-purple;
       font-size: 1.8rem;
@@ -330,10 +331,7 @@ span {
       &:hover {
         background: $lime;
       }
-
-
     }
-
   }
 
   &.curtain-up {
@@ -357,7 +355,8 @@ span {
 }
 
 .modal-help {
-  background: rgba($purple, 0.8) url(../images/how-to.svg) no-repeat center center / cover;
+  background: rgba($purple, 0.8) url(../images/how-to.svg) no-repeat center
+    center / cover;
 }
 
 .newgame-btn {
@@ -379,7 +378,7 @@ span {
 
 .winner {
   display: none;
-  
+
   &.visible {
     display: block;
     animation: fade-down 200ms ease-out forwards;
@@ -391,7 +390,8 @@ span {
     z-index: 5;
 
     .grad-bg {
-      background: #5659ba url(../images/moon-stars.svg) no-repeat center top / contain;
+      background: #5659ba url(../images/moon-stars.svg) no-repeat center top /
+        contain;
     }
 
     .main-content {
@@ -408,7 +408,8 @@ span {
       z-index: 10;
     }
 
-    .flamingo, .parrot {
+    .flamingo,
+    .parrot {
       bottom: 0;
     }
 
@@ -420,14 +421,15 @@ span {
         margin-bottom: 6rem;
       }
     }
-  
-    h4, h1 {
+
+    h4,
+    h1 {
       color: $white;
     }
 
     h1 {
       font-size: 8rem;
-      text-shadow: -0.8rem 0.5rem rgba(0,0,0,1);
+      text-shadow: -0.8rem 0.5rem rgba(0, 0, 0, 1);
     }
 
     h4 {
@@ -443,5 +445,35 @@ span {
     .jump2 {
       animation: jump2 250ms ease-in-out reverse infinite;
     }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 1024px) {
+  .game-content {
+    height: calc(100vh - 6.5rem);
+  }
+
+  .no-yet {
+    font-size: 2rem !important;
+    &:before {
+      top: 8.7rem !important;
+    }
+  }
+
+  .deck {
+    display: none;
+  }
+
+  .cards {
+    > [class*="col-"] {
+      margin: 1rem;
+    }
+  }
+
+  .badge {
+    min-width: 2rem;
+    height: 2rem;
+    font-size: 1.2rem;
   }
 }

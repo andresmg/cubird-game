@@ -364,3 +364,56 @@
       contain;
   }
 }
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 1024px) {
+  #index {
+    .logo {
+      img {
+        margin-top: 5rem;
+      }
+    }
+  }
+
+  .copyright {
+    [class*="col"] {
+      font-size: 0.8rem;
+    }
+  }
+
+  .allBirds {
+    .grass {
+      bottom: 5rem;
+    }
+
+    .flock {
+      transform: scale(0.5);
+    }
+
+    .parrot,
+    .flamingo {
+      bottom: -5rem;
+    }
+
+    .duck {
+      bottom: 26%;
+    }
+
+    .large {
+      bottom: 22%;
+    }
+
+    .bird,
+    .mockingbird {
+      bottom: 28%;
+    }
+
+    .tucan {
+      bottom: 19%;
+    }
+
+    .owl {
+      bottom: 24%;
+    }
+  }
+}
