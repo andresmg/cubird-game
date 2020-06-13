@@ -454,6 +454,10 @@ span {
     padding: 2rem 1rem 1rem 2rem;
   }
 
+  .game-content {
+    height: calc(100vh - 10rem);
+  }
+
   .no-yet {
     font-size: 2rem !important;
     &:before {
@@ -478,5 +482,14 @@ span {
         bottom: -10rem;
       }
     }
+  }
+
+  .help {
+    bottom: 2rem;
+  }
+
+  .carousel-control-next,
+  .carousel-control-prev {
+    width: 28%;
   }
 }
