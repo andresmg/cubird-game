@@ -1,8 +1,7 @@
 class Board {
   constructor(cards) {
     this.cards = cards
-    this.playersNames = []
-    this.losJugadores = JSON.parse(localStorage.getItem("players"))
+    this.playersNames = JSON.parse(localStorage.getItem("playersNames"))
   }
 
   _remainDeck() {
@@ -69,12 +68,6 @@ class Board {
         parentElement.appendChild(this._addEmptyCard())
       }
     }
-  }
-
-  getPlayersNames() {
-    const url = new URL(window.location.href)
-    this.playersNames.push(url.searchParams.get("player1"))
-    this.playersNames.push(url.searchParams.get("player2"))
   }
 
   _birdMinMax(birdCard, el) {
