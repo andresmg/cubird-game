@@ -628,7 +628,7 @@ class Board {
       }
     })
 
-    if (birdsInBand >= 2 || namesInBand >= 2) {
+    if (birdsInBand >= 2 || namesInBand >= 7) {
       const winner = document.querySelector(".winner")
       winner.classList.add("visible")
 
