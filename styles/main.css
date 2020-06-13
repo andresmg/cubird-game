@@ -1195,7 +1195,12 @@ span {
   right: 4rem;
   bottom: 4rem;
   color: #459b45 !important;
+  background-color: #d4d754;
   font-size: 1.6rem;
+}
+
+.help:hover {
+  cursor: pointer;
 }
 
 .modal-help {
@@ -1318,7 +1323,7 @@ span {
     bottom: -10rem;
   }
   .help {
-    bottom: 2rem;
+    bottom: -1.5rem;
   }
   .carousel-control-next,
   .carousel-control-prev {
