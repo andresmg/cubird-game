@@ -1313,5 +1313,9 @@ span {
     height: 2rem;
     font-size: 1.2rem;
   }
+  .winner .allBirds .parrot,
+  .winner .allBirds .flamingo {
+    bottom: -10rem;
+  }
 }
 /*# sourceMappingURL=main.css.map */

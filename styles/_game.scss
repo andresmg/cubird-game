@@ -476,4 +476,13 @@ span {
     height: 2rem;
     font-size: 1.2rem;
   }
+
+  .winner {
+    .allBirds {
+      .parrot,
+      .flamingo {
+        bottom: -10rem;
+      }
+    }
+  }
 }
