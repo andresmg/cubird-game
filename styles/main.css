@@ -354,6 +354,64 @@ body {
   }
 }
 
+@-webkit-keyframes opacity-on {
+  0% {
+    opacity: 0;
+    margin-top: -5rem;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+@keyframes opacity-on {
+  0% {
+    opacity: 0;
+    margin-top: -5rem;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+@-webkit-keyframes opacity-off {
+  0% {
+    opacity: 1;
+    margin-top: 0;
+  }
+  50% {
+    opacity: 0;
+    margin-top: -5rem;
+  }
+  100% {
+    opacity: 0;
+    margin-top: -5rem;
+  }
+}
+
+@keyframes opacity-off {
+  0% {
+    opacity: 1;
+    margin-top: 0;
+  }
+  50% {
+    opacity: 0;
+    margin-top: -5rem;
+  }
+  100% {
+    opacity: 0;
+    margin-top: -5rem;
+  }
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -582,7 +640,7 @@ body {
 
 .allBirds .cloud-01 {
   position: fixed;
-  top: 30%;
+  top: 40%;
   left: 15%;
   width: 15rem;
   height: 10rem;
@@ -593,12 +651,13 @@ body {
 
 .allBirds .cloud-02 {
   position: fixed;
-  top: 20%;
+  top: 15%;
   right: 15%;
   width: 15rem;
   height: 10rem;
   background: url(../images/cloud-02.svg) no-repeat center bottom/contain;
-  animation: slide 27s linear reverse infinite;
+  -webkit-animation: slide 27s linear infinite;
+          animation: slide 27s linear infinite;
 }
 
 .allBirds .cloud-03 {
@@ -709,12 +768,46 @@ body {
   color: #6cb0b9;
 }
 
+#getPlayersModal .modal-body label.appear {
+  -webkit-animation: opacity-on 200ms ease-out forwards;
+          animation: opacity-on 200ms ease-out forwards;
+}
+
+#getPlayersModal .modal-body label.disappear {
+  -webkit-animation: opacity-off 200ms ease-out forwards;
+          animation: opacity-off 200ms ease-out forwards;
+}
+
 #getPlayersModal .modal-body input {
   padding: 1.5rem 1rem;
   outline: none;
   border: 0.1rem solid #6cb0b9;
   font-size: 1.6rem;
   color: #6cb0b9;
+}
+
+#getPlayersModal .add-players {
+  margin-top: 3rem;
+}
+
+#getPlayersModal .add-players button {
+  background-color: #6cb0b9;
+  color: #ffffff;
+  width: 4.5rem;
+  height: 4.5rem;
+  border: 0;
+  border-radius: 50%;
+  font-size: 2.2rem;
+  outline: none;
+}
+
+#getPlayersModal .add-players button:hover {
+  background-color: #459b45;
+  outline: none;
+}
+
+#getPlayersModal .add-players .players-qty {
+  font-size: 2.6rem;
 }
 
 #rulesModal .modal-header {

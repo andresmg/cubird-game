@@ -195,7 +195,7 @@
 
   .cloud-01 {
     position: fixed;
-    top: 30%;
+    top: 40%;
     left: 15%;
     width: 15rem;
     height: 10rem;
@@ -205,12 +205,12 @@
 
   .cloud-02 {
     position: fixed;
-    top: 20%;
+    top: 15%;
     right: 15%;
     width: 15rem;
     height: 10rem;
     background: url(../images/cloud-02.svg) no-repeat center bottom / contain;
-    animation: slide 27s linear reverse infinite;
+    animation: slide 27s linear infinite;
   }
 
   .cloud-03 {
@@ -307,6 +307,14 @@
       font-size: 1.6rem;
       margin: 1rem 0;
       color: $main-blue;
+
+      &.appear {
+        animation: opacity-on 200ms ease-out forwards;
+      }
+
+      &.disappear {
+        animation: opacity-off 200ms ease-out forwards;
+      }
     }
 
     input {
@@ -315,6 +323,30 @@
       border: 0.1rem solid $main-blue;
       font-size: 1.6rem;
       color: $main-blue;
+    }
+  }
+
+  .add-players {
+    margin-top: 3rem;
+
+    button {
+      background-color: $main-blue;
+      color: $white;
+      width: 4.5rem;
+      height: 4.5rem;
+      border: 0;
+      border-radius: 50%;
+      font-size: 2.2rem;
+      outline: none;
+
+      &:hover {
+        background-color: $main-green;
+        outline: none;
+      }
+    }
+
+    .players-qty {
+      font-size: 2.6rem;
     }
   }
 }

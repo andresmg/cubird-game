@@ -124,18 +124,13 @@ class Board {
       playerBlock.classList.add("player-block", `player${i}`)
       playerBlock.setAttribute("id", `player${i}`)
 
-      if (i === 2) {
+      if (i >= 2) {
         playerBlock.classList.add("hide")
       }
 
       const player = document.createElement("h1")
-      if (el) {
-        player.innerText = `${el}'s deck`
-        i++
-      } else {
-        player.innerText = `Player ${i}'s deck`
-        i++
-      }
+      player.innerText = `${el}'s deck`
+      i++
 
       playerDeck.appendChild(playerBlock)
       playerBlock.appendChild(player)
@@ -183,13 +178,8 @@ class Board {
       carouselItem.classList.add("carousel-item", `player${i}`)
 
       const player = document.createElement("h4")
-      if (el) {
-        player.innerText = `${el}'s flocks`
-        i++
-      } else {
-        player.innerText = `Player ${i}'s flocks`
-        i++
-      }
+      player.innerText = `${el}'s flocks`
+      i++
 
       carouselInner.appendChild(carouselItem)
       carouselItem.appendChild(player)
@@ -335,7 +325,6 @@ class Board {
     birdsToStealRow.querySelectorAll("[name]").forEach((bird) => {
       stealedBirds.push(bird.getAttribute("name"))
     })
-    console.log(stealedBirds)
 
     //Se agregan nuevas celdas vacías a cada fila donde hubo posibilidad de robar
     document.querySelectorAll(".posibles").forEach((el) => {
@@ -521,55 +510,58 @@ class Board {
     const nextRound = document.querySelector(".next-round")
     nextRound.classList.add("visible")
 
-    if (getCurrentPlayerId === "player1" && this.playersNames[0] === "") {
-      document.querySelector(".next-round h1").innerText = `player 2's turn`
-    } else if (
-      getCurrentPlayerId === "player1" &&
-      this.playersNames[0] !== ""
-    ) {
-      document.querySelector(
-        ".next-round h1"
-      ).innerText = `${this.playersNames[1]}'s turn`
-    } else if (
-      getCurrentPlayerId === "player2" &&
-      this.playersNames[1] === ""
-    ) {
-      document.querySelector(".next-round h1").innerText = `player 1's turn`
-    } else if (
-      getCurrentPlayerId === "player1" &&
-      this.playersNames[0] !== ""
-    ) {
-      document.querySelector(
-        ".next-round h1"
-      ).innerText = `${this.playersNames[0]}'s turn`
+    for (let i = 0; i < this.playersNames.length; i++) {
+      if (getCurrentPlayerId === `player${i + 1}`) {
+        document.querySelector(".next-round h1").innerText = `${
+          this.playersNames[i + 1]
+        } turn`
+        break
+      } else if (getCurrentPlayerId === `player${this.playersNames.length}`) {
+        document.querySelector(
+          ".next-round h1"
+        ).innerText = `${this.playersNames[0]} turn`
+        break
+      }
     }
 
     const nextBtn = document.querySelector(".next-roundBtn")
     nextBtn.addEventListener(
       "click",
       (event) => {
-        if (getCurrentPlayerId === "player2") {
-          document
-            .querySelector(".carousel-item.player1")
-            .classList.add("active")
-          document
-            .querySelector(".carousel-item.player2")
-            .classList.remove("active")
-          document.querySelector(".player-block.player2").classList.add("hide")
-          document
-            .querySelector(".player-block.player1")
-            .classList.remove("hide")
-        } else {
-          document
-            .querySelector(".carousel-item.player1")
-            .classList.remove("active")
-          document
-            .querySelector(".carousel-item.player2")
-            .classList.add("active")
-          document.querySelector(".player-block.player1").classList.add("hide")
-          document
-            .querySelector(".player-block.player2")
-            .classList.remove("hide")
+        for (let i = 0; i < this.playersNames.length; i++) {
+          if (getCurrentPlayerId === `player${i + 1}`) {
+            document
+              .querySelector(`.carousel-item.${getCurrentPlayerId}`)
+              .classList.remove("active")
+            document
+              .querySelector(`.player-block.${getCurrentPlayerId}`)
+              .classList.add("hide")
+            document
+              .querySelector(`.player-block.player${i + 2}`)
+              .classList.remove("hide")
+            console.log(`${getCurrentPlayerId}`)
+            console.log(`${i + 2}`)
+            document
+              .querySelector(`.carousel-item.player${i + 2}`)
+              .classList.add("active")
+            break
+          } else if (
+            getCurrentPlayerId === `player${this.playersNames.length}`
+          ) {
+            document
+              .querySelector(`.carousel-item.${getCurrentPlayerId}`)
+              .classList.remove("active")
+            document
+              .querySelector(`.player-block.${getCurrentPlayerId}`)
+              .classList.add("hide")
+            document
+              .querySelector(`.carousel-item.player1`)
+              .classList.add("active")
+            document
+              .querySelector(`.player-block.player1`)
+              .classList.remove("hide")
+            break
+          }
         }
 
         //Se quita la cortina "next player turn"
@@ -633,17 +625,9 @@ class Board {
       winner.classList.add("visible")
 
       const winnerName = winner.querySelector("h1")
-      if (currentPlayer.getAttribute("id") === "player1") {
-        if (this.playersNames[0] !== "") {
-          winnerName.innerText = this.playersNames[0]
-        } else {
-          winnerName.innerText = currentPlayer.getAttribute("id")
-        }
-      } else if (currentPlayer.getAttribute("id") === "player2") {
-        if (this.playersNames[1] !== "") {
-          winnerName.innerText = this.playersNames[1]
-        } else {
-          winnerName.innerText = currentPlayer.getAttribute("id")
+      for (let i = 0; i < this.playersNames.length; i++) {
+        if (currentPlayer.getAttribute("id") === `player${i + 1}`) {
+          winnerName.innerText = this.playersNames[i]
         }
       }
     }
