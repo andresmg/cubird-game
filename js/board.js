@@ -260,7 +260,6 @@ class Board {
       let selectedBird
       let playerBirds = currentPlayer.querySelectorAll("[name]")
 
-      //SE AÑADE UN EVENTO CLICK EN LA CARTA SELECCIONADA POR EL JUGADOR
       playerBirds.forEach((currentPlayerCard) => {
         currentPlayerCard.addEventListener(
           "click",
@@ -320,23 +319,19 @@ class Board {
 
     const birdsToStealRow = posibleBirds.closest(".gameRow")
 
-    //Se cogen las cartas "robadas" de la fila
     let stealedBirds = []
     birdsToStealRow.querySelectorAll("[name]").forEach((bird) => {
       stealedBirds.push(bird.getAttribute("name"))
     })
 
-    //Se agregan nuevas celdas vacías a cada fila donde hubo posibilidad de robar
     document.querySelectorAll(".posibles").forEach((el) => {
       const newEmptyCard = el.closest(".gameRow")
       el.remove()
       newEmptyCard.appendChild(this._addEmptyCard())
     })
 
-    //Se eliminan los pájaros de la fila seleccionada
     birdsToStealRow.innerHTML = ""
 
-    //Se agregan tres cartas a la fila vacía
     for (let i = 0; i < 3; i++) {
       birdsToStealRow.appendChild(this._addBirdCard(this.cards))
       birdsToStealRow.querySelectorAll("[name]").forEach((el) => {
@@ -349,10 +344,8 @@ class Board {
 
     this._remainDeck()
 
-    //Se agrega celda vacía a la fila
     birdsToStealRow.appendChild(this._addEmptyCard())
 
-    //Se cogen las cartas del jugador
     let cardsInPlayerDeck = []
     document
       .getElementById(getCurrentPlayerId)
@@ -363,7 +356,6 @@ class Board {
         }
       })
 
-    //Se actualiza el deck del jugador
     let uniqueArr = cardsInPlayerDeck.concat(stealedBirds)
     document
       .getElementById(getCurrentPlayerId)
@@ -373,14 +365,12 @@ class Board {
       document.getElementById(getCurrentPlayerId).querySelector(".cards")
     )
 
-    //Se activan los botones
     document.querySelectorAll("button").forEach((el) => {
       el.disabled = false
       el.classList.add("enabled")
       el.classList.remove("disabled")
     })
 
-    //Se agrega evento al botón next round
     const nextRoundBtn = document.querySelector(".end-round-btn")
     let nextRound
     nextRoundBtn.addEventListener(
@@ -494,7 +484,6 @@ class Board {
             }
           })
 
-          console.log(currentPlayerCollectionArr)
           let uniqueArr = playerBirdArr.concat(currentPlayerCollectionArr)
           const birdObj = this._updatePlayerCards(uniqueArr, currentCollection)
         }
@@ -539,8 +528,6 @@ class Board {
             document
               .querySelector(`.player-block.player${i + 2}`)
               .classList.remove("hide")
-            console.log(`${getCurrentPlayerId}`)
-            console.log(`${i + 2}`)
             document
               .querySelector(`.carousel-item.player${i + 2}`)
               .classList.add("active")
@@ -564,13 +551,11 @@ class Board {
           }
         }
 
-        //Se quita la cortina "next player turn"
         nextRound.classList.add("curtain-up")
         setTimeout(() => {
           nextRound.classList.remove("visible", "curtain-up")
         }, 200)
 
-        //Si hay mensaje de "WAIT" se borra
         const message = document.querySelector(`#${getCurrentPlayerId} .no-yet`)
         if (message) {
           message.remove()
@@ -582,7 +567,7 @@ class Board {
 
   _finishRound(nextRound, getCurrentPlayerId) {
     nextRound = event.target
-    //Se añade otra vez el evenlistener a las cartas nuevas
+
     document
       .getElementById(getCurrentPlayerId)
       .querySelectorAll(".cards [name]")
@@ -600,12 +585,9 @@ class Board {
   }
 
   _andTheWinnerIs(currentPlayer) {
-    console.log("chequeo and the winner is")
-
     let birdsInBand = 0
     let namesInBand = 0
 
-    //Selecciono los pájaros de la colección del jugador y obtengo su nombre y su número
     const playerCollection = document.querySelectorAll(
       `.carousel-inner .${currentPlayer.getAttribute("id")} .cards [name]`
     )
